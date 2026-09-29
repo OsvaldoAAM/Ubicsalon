@@ -5,13 +5,85 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { FIME_BUILDINGS, GROUND_DECORATIONS } from '../data/fimeBuildings3D';
 import { RotateCcw, Lock, Unlock } from 'lucide-react';
 
-export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelectBuilding }) {
+// Aliases para nombres alternativos que puedan venir del GLB
+const ID_ALIASES = {
+  'cidet': 'cidte',
+  'centro-desarrollo': 'centro-cultural',
+  'centro-cultural-y-deportivo': 'centro-cultural',
+  'cdfc': 'centro-cultural',
+  'posgrado': 'edificio-12',
+  'cultural': 'centro-cultural',
+  'beisbol': 'campo-beisbol',
+  'campo-beisbol': 'campo-beisbol',
+  'campo-fime': 'campo-fime',
+  'campo-sintetico': 'campo-sintetico-fime',
+  'campo-sintetico-fime': 'campo-sintetico-fime',
+  'huella': 'huella',
+  'la-huella': 'huella',
+};
+
+// Mapear cualquier nombre de malla o nodo de Blender a un ID de edificio en FIME_BUILDINGS
+function findBuildingIdInName(rawName) {
+  if (!rawName) return null;
+
+  const cleaned = rawName
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[_ ]+/g, '-')
+    .trim();
+
+  // 1. Revisar alias explícitos
+  for (const [alias, targetId] of Object.entries(ID_ALIASES)) {
+    if (cleaned.includes(alias)) return targetId;
+  }
+
+  // 2. Buscar coincidencia con IDs, nombres o nombres cortos conocidos
+  const sortedBuildings = [...FIME_BUILDINGS].sort((a, b) => b.id.length - a.id.length);
+  for (const bld of sortedBuildings) {
+    const normId = bld.id.toLowerCase();
+    const normName = bld.name.toLowerCase().replace(/[_ ]+/g, '-');
+    const normShort = bld.shortName.toLowerCase().replace(/[_ ]+/g, '-');
+
+    if (cleaned.includes(normId) || cleaned.includes(normName) || cleaned === normShort) {
+      return bld.id;
+    }
+  }
+
+  return null;
+}
+
+// Verificar si un nombre corresponde a terreno / suelo / accesorios de mapa
+function isIgnoredMeshName(name) {
+  if (!name) return false;
+  const cleaned = name.toLowerCase();
+  return (
+    cleaned.includes('plane') ||
+    cleaned.includes('empty') ||
+    cleaned.includes('circle') ||
+    cleaned.includes('ground') ||
+    cleaned.includes('piso') ||
+    cleaned.includes('calle') ||
+    cleaned.includes('terreno')
+  );
+}
+
+// Verificar que una malla sea visible y no sea transparente/invisible
+function isMeshVisible(mesh) {
+  if (!mesh || !mesh.visible) return false;
+  if (mesh.material) {
+    const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+    const allInvisible = mats.every(m => m.transparent && m.opacity === 0);
+    if (allInvisible) return false;
+  }
+  return true;
+}
+
+export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelectBuilding, resetCamTrigger }) {
   const [isRotationLocked, setIsRotationLocked] = useState(false);
   const canvasRef = useRef(null);
   const cameraRef = useRef(null);
   const controlsRef = useRef(null);
   const buildingsMapRef = useRef(new Map());
-  const floorIndicatorsRef = useRef(new Map());
   const targetLookAtRef = useRef(new THREE.Vector3(0, 0, 0));
   const currentLookAtRef = useRef(new THREE.Vector3(0, 0, 0));
   const sceneRef = useRef(null);
@@ -19,6 +91,7 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
   const proceduralGroupRef = useRef(null);
   const customModelGroupRef = useRef(null);
   const isTransitioningRef = useRef(false);
+  const glbLoadedRef = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -60,11 +133,11 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
     controls.enablePan = true;
     controls.enableRotate = true;
     controls.enableZoom = true;
-    controls.screenSpacePanning = true;
-    controls.maxPolarAngle = Math.PI / 4;
+    controls.screenSpacePanning = false; // Bloquear paneo estrictamente al plano del suelo XZ
+    controls.maxPolarAngle = Math.PI / 3.2; // Evitar bajar demasiado cerca del horizonte
     controls.minPolarAngle = Math.PI / 15;
-    controls.minZoom = 0.3;
-    controls.maxZoom = 5.0;
+    controls.minZoom = 0.7;
+    controls.maxZoom = 3.5;
     controls.touches = {
       ONE: THREE.TOUCH.PAN,
       TWO: THREE.TOUCH.DOLLY_ROTATE,
@@ -94,10 +167,12 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -0.1;
     ground.receiveShadow = true;
+    ground.userData.isGround = true;
     scene.add(ground);
 
     const grid = new THREE.GridHelper(60, 30, '#1e293b', '#172033');
     grid.position.y = -0.08;
+    grid.userData.isGround = true;
     scene.add(grid);
 
     // Grupo procedimental de respaldo
@@ -112,11 +187,11 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
       );
       mesh.position.set(dec.position.x, dec.position.y, dec.position.z);
       mesh.receiveShadow = true;
+      mesh.userData.isGround = true;
       proceduralGroup.add(mesh);
     });
 
     buildingsMapRef.current.clear();
-    floorIndicatorsRef.current.clear();
 
     FIME_BUILDINGS.forEach(bld => {
       const group = new THREE.Group();
@@ -129,6 +204,7 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
       mesh.position.y = bld.size.height / 2;
       mesh.castShadow = true;
       mesh.receiveShadow = true;
+      mesh.userData.buildingId = bld.id;
       group.add(mesh);
 
       const edges = new THREE.LineSegments(
@@ -138,25 +214,18 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
       edges.position.y = bld.size.height / 2;
       group.add(edges);
 
-      const floorIndicators = [];
-      const step = bld.size.height / bld.floors;
-      for (let f = 1; f <= bld.floors; f++) {
-        const sliceMat = new THREE.MeshBasicMaterial({ color: '#38bdf8', transparent: true, opacity: 0 });
-        const slice = new THREE.Mesh(
-          new THREE.BoxGeometry(bld.size.width + 0.2, 0.2, bld.size.depth + 0.2),
-          sliceMat
-        );
-        slice.position.y = (f - 0.5) * step;
-        group.add(slice);
-        floorIndicators.push({ floor: f, mat: sliceMat });
-      }
-
       proceduralGroup.add(group);
-      buildingsMapRef.current.set(bld.id, { group, mesh, mat, originalColor: bld.color, bldData: bld });
-      floorIndicatorsRef.current.set(bld.id, floorIndicators);
+      buildingsMapRef.current.set(bld.id, {
+        group,
+        meshes: [mesh],
+        materials: [mat],
+        originalColors: [mat.color.getHex()],
+        worldPos: new THREE.Vector3(bld.position.x, 0, bld.position.z),
+        bldData: bld
+      });
     });
 
-    // 7. Intentar cargar el modelo GLTF/GLB predeterminado si existe en public/campus.glb
+    // 7. Cargar modelo GLTF/GLB
     const loader = new GLTFLoader();
     loader.load(
       '/campus.glb',
@@ -164,12 +233,14 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
         if (customModelGroupRef.current) {
           scene.remove(customModelGroupRef.current);
         }
-        customModelGroupRef.current = gltf.scene;
-        scene.add(gltf.scene);
+        const model = gltf.scene;
+        customModelGroupRef.current = model;
+        scene.add(model);
         proceduralGroup.visible = false;
+        glbLoadedRef.current = true;
 
-        // Auto-escalado y centrado del modelo 3D personalizado
-        const box = new THREE.Box3().setFromObject(gltf.scene);
+        // Auto-escalado y centrado
+        const box = new THREE.Box3().setFromObject(model);
         const size = new THREE.Vector3();
         const center = new THREE.Vector3();
         box.getSize(size);
@@ -178,34 +249,87 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
         const maxDim = Math.max(size.x, size.z);
         if (maxDim > 0) {
           const targetScale = 35 / maxDim;
-          gltf.scene.scale.set(targetScale, targetScale, targetScale);
+          model.scale.set(targetScale, targetScale, targetScale);
         }
 
-        // Centrar horizontalmente y alinear el fondo al suelo Y=0
-        gltf.scene.position.x = -center.x * gltf.scene.scale.x;
-        gltf.scene.position.z = -center.z * gltf.scene.scale.z;
-        gltf.scene.position.y = -box.min.y * gltf.scene.scale.y;
+        model.position.x = -center.x * model.scale.x;
+        model.position.z = -center.z * model.scale.z;
+        model.position.y = -box.min.y * model.scale.y;
 
-        gltf.scene.traverse((child) => {
-          if (child.isMesh) {
-            child.castShadow = true;
-            child.receiveShadow = true;
-            const id = child.userData?.id || child.name;
-            if (id) {
-              const bldData = FIME_BUILDINGS.find(b => b.id === id) || { highlightColor: '#38bdf8', position: child.position };
-              if (child.material) {
-                const originalColor = child.material.color ? child.material.color.getHex() : '#ffffff';
-                buildingsMapRef.current.set(id, {
-                  group: child,
-                  mesh: child,
-                  mat: child.material,
-                  originalColor,
-                  bldData
-                });
-              }
+        // Actualizar matrices mundiales post-transformación
+        model.updateMatrixWorld(true);
+
+        // Limpiar mapa procedimental
+        buildingsMapRef.current.clear();
+
+        // Recorrer TODAS las mallas del modelo GLB
+        model.traverse((child) => {
+          if (!child.isMesh) return;
+
+          child.castShadow = true;
+          child.receiveShadow = true;
+
+          // Si es un plano/empty/suelo de Blender, etiquetarlo como terreno
+          if (isIgnoredMeshName(child.name)) {
+            child.userData.isGround = true;
+            return;
+          }
+
+          // Buscar si la malla o algún ancestro pertenece a un edificio conocido
+          let foundBuildingId = null;
+          let curr = child;
+
+          while (curr && curr !== model && curr !== scene) {
+            const rawName = curr.userData?.id || curr.name;
+            const bldId = findBuildingIdInName(rawName);
+            if (bldId) {
+              foundBuildingId = bldId;
+              break;
             }
+            curr = curr.parent;
+          }
+
+          if (foundBuildingId) {
+            child.userData.buildingId = foundBuildingId;
+
+            if (!buildingsMapRef.current.has(foundBuildingId)) {
+              const bldData = FIME_BUILDINGS.find(b => b.id === foundBuildingId);
+              buildingsMapRef.current.set(foundBuildingId, {
+                group: child.parent || child,
+                meshes: [],
+                materials: [],
+                originalColors: [],
+                meshBox: new THREE.Box3(),
+                worldPos: new THREE.Vector3(),
+                bldData
+              });
+            }
+
+            const bldRecord = buildingsMapRef.current.get(foundBuildingId);
+            bldRecord.meshes.push(child);
+            bldRecord.meshBox.expandByObject(child);
+
+            // Clonar material para resaltado independiente por edificio
+            const mats = Array.isArray(child.material) ? child.material : [child.material];
+            const clonedMats = mats.map((m) => {
+              const cloned = m.clone();
+              bldRecord.materials.push(cloned);
+              bldRecord.originalColors.push(cloned.color.getHex());
+              return cloned;
+            });
+            child.material = clonedMats.length === 1 ? clonedMats[0] : clonedMats;
+          } else {
+            // Malla no identificada como edificio → Terreno decorativo
+            child.userData.isGround = true;
           }
         });
+
+        // Calcular centros mundiales reales de los edificios
+        buildingsMapRef.current.forEach((record) => {
+          record.meshBox.getCenter(record.worldPos);
+        });
+
+        console.log(`GLB cargado. Edificios interactivos mapeados: [${[...buildingsMapRef.current.keys()].join(', ')}]`);
       },
       undefined,
       () => {
@@ -213,7 +337,7 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
       }
     );
 
-    // 8. Raycasting
+    // 8. Detección Inteligente de Toque (Raycast + Selección por Proximidad)
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
     let pointerDown = { x: 0, y: 0, time: 0 };
@@ -227,34 +351,108 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
       const dt = Date.now() - pointerDown.time;
       const dx = e.clientX - pointerDown.x;
       const dy = e.clientY - pointerDown.y;
-      if (dt > 300 || Math.hypot(dx, dy) > 8) return;
+      // Tolerancia amplia para toques móviles y clics rápidos (hasta 500ms y 15px)
+      if (dt > 500 || Math.hypot(dx, dy) > 15) return;
 
       const rect = canvas.getBoundingClientRect();
       mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
       raycaster.setFromCamera(mouse, camera);
 
-      for (const intersect of raycaster.intersectObjects(scene.children, true)) {
-        let obj = intersect.object;
-        while (obj && obj !== scene) {
-          const id = obj.userData?.id || obj.name;
-          if (id && buildingsMapRef.current.has(id)) {
-            onSelectBuilding(id);
-            return;
+      const intersects = raycaster.intersectObjects(scene.children, true);
+
+      const hitBuildings = [];
+      let groundPoint = null;
+
+      // Evaluar todas las mallas en el rayo
+      for (const intersect of intersects) {
+        const mesh = intersect.object;
+        if (!isMeshVisible(mesh)) continue;
+
+        // Si es malla de suelo/terreno/grid, registrar el punto 3D en el suelo sin interrumpir
+        if (mesh.userData.isGround || mesh === ground || mesh === grid) {
+          if (!groundPoint) {
+            groundPoint = intersect.point.clone();
           }
-          obj = obj.parent;
+          continue;
+        }
+
+        // Si la malla pertenece a un edificio conocido
+        const bldId = mesh.userData?.buildingId || findBuildingIdInName(mesh.name);
+        if (bldId && buildingsMapRef.current.has(bldId)) {
+          if (!hitBuildings.some(h => h.id === bldId)) {
+            hitBuildings.push({
+              id: bldId,
+              distance: intersect.distance,
+              point: intersect.point.clone(),
+              record: buildingsMapRef.current.get(bldId)
+            });
+          }
         }
       }
+
+      // CASO A: El rayo tocó polígonos de edificio(s)
+      if (hitBuildings.length > 0) {
+        if (hitBuildings.length === 1) {
+          console.log(`Toque 3D: Impacto directo → Edificio ${hitBuildings[0].id}`);
+          onSelectBuilding(hitBuildings[0].id);
+          return;
+        }
+
+        // Si tocó múltiples edificios por superposición de vista, seleccionar el mas cercano a su propio centro
+        hitBuildings.sort((a, b) => {
+          const distA = a.point.distanceTo(a.record.worldPos);
+          const distB = b.point.distanceTo(b.record.worldPos);
+          return distA - distB;
+        });
+
+        console.log(`Toque 3D: Múltiples mallas rozadas [${hitBuildings.map(h => h.id).join(', ')}] → Seleccionado por centro: ${hitBuildings[0].id}`);
+        onSelectBuilding(hitBuildings[0].id);
+        return;
+      }
+
+      // CASO B: El rayo tocó terreno o pasó muy cerca del edificio (Tolerancia de proximidad 2D)
+      if (!groundPoint) {
+        const planeY0 = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+        groundPoint = new THREE.Vector3();
+        raycaster.ray.intersectPlane(planeY0, groundPoint);
+      }
+
+      if (groundPoint) {
+        let closestBldId = null;
+        let minDistance = Infinity;
+        const TOUCH_THRESHOLD = 4.5; // Radio de tolerancia alrededor del edificio en el suelo
+
+        buildingsMapRef.current.forEach((record, bldId) => {
+          const dxSq = (groundPoint.x - record.worldPos.x) ** 2;
+          const dzSq = (groundPoint.z - record.worldPos.z) ** 2;
+          const dist2D = Math.sqrt(dxSq + dzSq);
+
+          if (dist2D < TOUCH_THRESHOLD && dist2D < minDistance) {
+            minDistance = dist2D;
+            closestBldId = bldId;
+          }
+        });
+
+        if (closestBldId) {
+          console.log(`Toque 3D: Toque cercano en suelo (${groundPoint.x.toFixed(1)}, ${groundPoint.z.toFixed(1)}) → Edificio seleccionado: ${closestBldId} (dist: ${minDistance.toFixed(2)})`);
+          onSelectBuilding(closestBldId);
+          return;
+        }
+      }
+
+      // CASO C: Suelo distante fuera de cualquier edificio
+      console.log(`Toque 3D: Suelo distante → Deseleccionar (Cámara intacta)`);
+      onSelectBuilding(null);
     };
 
     canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointerup', onPointerUp);
 
-    // 9. Loop animación
+    // 9. Loop de animación
     let rafId;
     const tempNextLookAt = new THREE.Vector3();
     const tempDelta = new THREE.Vector3();
-    const MAX_PAN_BOUND = 22; // Límite máximo de paneo desde el centro
 
     const animate = () => {
       rafId = requestAnimationFrame(animate);
@@ -275,9 +473,15 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
         targetLookAtRef.current.copy(controls.target);
       }
 
-      // Restringir el paneo dentro del límite permitido sin regresar al origen
-      const clampedX = THREE.MathUtils.clamp(controls.target.x, -MAX_PAN_BOUND, MAX_PAN_BOUND);
-      const clampedZ = THREE.MathUtils.clamp(controls.target.z, -MAX_PAN_BOUND, MAX_PAN_BOUND);
+      // Bloquear la altura del objetivo al plano del suelo (y = 0)
+      controls.target.y = 0;
+
+      // Calcular límite dinámico de paneo según el zoom
+      const zoomRatio = (camera.zoom - controls.minZoom) / (controls.maxZoom - controls.minZoom);
+      const currentMaxBound = THREE.MathUtils.lerp(10, 20, THREE.MathUtils.clamp(zoomRatio, 0, 1));
+
+      const clampedX = THREE.MathUtils.clamp(controls.target.x, -currentMaxBound, currentMaxBound);
+      const clampedZ = THREE.MathUtils.clamp(controls.target.z, -currentMaxBound, currentMaxBound);
 
       if (clampedX !== controls.target.x || clampedZ !== controls.target.z) {
         const dx = clampedX - controls.target.x;
@@ -319,23 +523,47 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
     };
   }, []);
 
-  // Resaltado de Edificio seleccionado
+  // Manejar el botón explícito de restablecer vista ("Todos" o botón flotante)
   useEffect(() => {
-    buildingsMapRef.current.forEach(({ group, mesh, mat, originalColor, bldData }, id) => {
+    if (resetCamTrigger > 0 && controlsRef.current && cameraRef.current) {
+      targetLookAtRef.current.set(0, 0, 0);
+      currentLookAtRef.current.set(0, 0, 0);
+      isTransitioningRef.current = true;
+      cameraRef.current.zoom = 1;
+      cameraRef.current.updateProjectionMatrix();
+      controlsRef.current.reset();
+    }
+  }, [resetCamTrigger]);
+
+  // Resaltado de Edificio seleccionado y encuadre
+  useEffect(() => {
+    buildingsMapRef.current.forEach(({ materials, originalColors, worldPos, bldData }, id) => {
       const sel = id === selectedBuildingId;
-      if (mat && mat.color) {
-        mat.color.set(sel ? bldData.highlightColor : originalColor);
-        if (mat.emissive) mat.emissive.set(sel ? '#2563eb' : '#000000');
-      }
-      if (sel && bldData?.position) {
-        targetLookAtRef.current.set(bldData.position.x, 0, bldData.position.z);
+
+      materials.forEach((mat, i) => {
+        if (mat.emissive !== undefined) {
+          if (sel) {
+            mat.emissive.set('#0284c7');
+            mat.emissiveIntensity = 0.9;
+          } else {
+            mat.emissive.set('#000000');
+            mat.emissiveIntensity = 0;
+          }
+        } else {
+          if (sel) {
+            mat.color.set('#38bdf8');
+          } else {
+            mat.color.setHex(originalColors[i]);
+          }
+        }
+      });
+
+      // Mover la cámara a la posición del edificio SOLO cuando se selecciona un edificio concreto
+      if (sel && worldPos) {
+        targetLookAtRef.current.set(worldPos.x, 0, worldPos.z);
         isTransitioningRef.current = true;
       }
     });
-    if (!selectedBuildingId) {
-      targetLookAtRef.current.set(0, 0, 0);
-      isTransitioningRef.current = true;
-    }
   }, [selectedBuildingId, selectedPiso]);
 
   const toggleRotationLock = () => {
@@ -348,13 +576,7 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
 
   const resetCam = () => {
     if (controlsRef.current && cameraRef.current) {
-      onSelectBuilding(null);
-      targetLookAtRef.current.set(0, 0, 0);
-      currentLookAtRef.current.set(0, 0, 0);
-      isTransitioningRef.current = true;
-      cameraRef.current.zoom = 1;
-      cameraRef.current.updateProjectionMatrix();
-      controlsRef.current.reset();
+      onSelectBuilding(null, true);
     }
   };
 
@@ -365,7 +587,7 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
         style={{ display: 'block', width: '100%', height: '100%', touchAction: 'none' }}
       />
 
-      {/* Controles flotantes limpios */}
+      {/* Controles flotantes */}
       <div className="fixed right-3 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2 pointer-events-auto">
         <button
           onClick={toggleRotationLock}

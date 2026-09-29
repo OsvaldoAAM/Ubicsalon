@@ -21,6 +21,7 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isListExpanded, setIsListExpanded] = useState(false);
+  const [resetCamCount, setResetCamCount] = useState(0);
 
   const handleSelectSalón = (salon) => {
     setSelectedSalón(salon);
@@ -34,7 +35,7 @@ export default function App() {
     }
   };
 
-  const handleSelectBuilding = (buildingId) => {
+  const handleSelectBuilding = (buildingId, shouldResetCam = false) => {
     setSelectedBuildingId(buildingId);
     setActiveCategory(null);
     if (buildingId) {
@@ -45,6 +46,9 @@ export default function App() {
     } else {
       setSelectedSalón(null);
       setSelectedPiso(null);
+    }
+    if (shouldResetCam) {
+      setResetCamCount((c) => c + 1);
     }
   };
 
@@ -66,6 +70,7 @@ export default function App() {
         selectedBuildingId={selectedBuildingId}
         selectedPiso={selectedPiso}
         onSelectBuilding={handleSelectBuilding}
+        resetCamTrigger={resetCamCount}
       />
 
       {/* CAPA FLOTANTE SUPERIOR (Z-20): Header + Buscador + Filtros en formato compacto */}
