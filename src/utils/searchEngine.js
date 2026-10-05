@@ -1,10 +1,9 @@
 import Fuse from 'fuse.js';
-import salonesData from '../data/salones.json';
+import defaultSalonesData from '../data/salones.json';
 
-// Configuración avanzada de Fuse.js para tolerancia a faltas y coincidencias rápidas
 const options = {
   includeScore: true,
-  threshold: 0.4, // Tolerancia a faltas de ortografía
+  threshold: 0.4,
   distance: 100,
   keys: [
     { name: 'codigo', weight: 0.4 },
@@ -14,25 +13,22 @@ const options = {
   ]
 };
 
-const fuse = new Fuse(salonesData, options);
-
-export function buscarSalones(query) {
+export function buscarSalones(query, salonesList = defaultSalonesData) {
   if (!query || query.trim() === '') {
-    return salonesData;
+    return salonesList;
   }
 
   const cleanQuery = query.trim();
+  const fuse = new Fuse(salonesList, options);
   
   // Búsqueda directa por coincidencia de código exacto primero
-  const exactMatches = salonesData.filter(s => 
+  const exactMatches = salonesList.filter(s => 
     s.codigo.toLowerCase() === cleanQuery.toLowerCase() ||
     s.nombre.toLowerCase().includes(cleanQuery.toLowerCase())
   );
 
   if (exactMatches.length > 0 && cleanQuery.length >= 3) {
-    // Si hay coincidencia exacta de código, priorizarla
     const fuzzyResults = fuse.search(cleanQuery).map(result => result.item);
-    // Unir sin duplicados
     const combined = [...exactMatches, ...fuzzyResults];
     return Array.from(new Set(combined.map(a => a.id)))
       .map(id => combined.find(a => a.id === id));
@@ -42,11 +38,12 @@ export function buscarSalones(query) {
   return results.map(result => result.item);
 }
 
-export function obtenerSalonesPorEdificio(edificioId) {
-  if (!edificioId) return salonesData;
-  return salonesData.filter(s => s.edificioId === edificioId);
+export function obtenerSalonesPorEdificio(edificioId, salonesList = defaultSalonesData) {
+  if (!edificioId) return salonesList;
+  return salonesList.filter(s => s.edificioId === edificioId);
 }
 
 export function obtenerSalonesDataset() {
-  return salonesData;
+  return defaultSalonesData;
 }
+

@@ -57,6 +57,11 @@ export default function App() {
     localStorage.setItem('ubicsalon_custom_data', JSON.stringify(updatedList));
   };
 
+  const handleResetSalones = () => {
+    localStorage.removeItem('ubicsalon_custom_data');
+    setSalones(initialSalonesData);
+  };
+
   const displayedSalones = salones.filter((s) => {
     if (selectedBuildingId && s.edificioId !== selectedBuildingId) return false;
     if (activeCategory && s.tipo !== activeCategory) return false;
@@ -80,7 +85,7 @@ export default function App() {
         </div>
 
         <div className="pointer-events-auto">
-          <SearchBar onSelectSalón={handleSelectSalón} selectedSalón={selectedSalón} />
+          <SearchBar onSelectSalón={handleSelectSalón} selectedSalón={selectedSalón} salones={salones} />
         </div>
 
         <div className="pointer-events-auto bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-800/80 px-1 py-0.5 shadow-lg">
@@ -164,6 +169,7 @@ export default function App() {
         onClose={() => setIsAdminOpen(false)}
         salonesList={salones}
         onSaveSalones={handleSaveSalones}
+        onResetDefaults={handleResetSalones}
       />
     </div>
   );

@@ -1,9 +1,13 @@
-import React, { useState, useMemo } from 'react';
-import { Plus, Download, Save, X, Edit2, Trash2, CheckCircle2, Search, Filter, CheckSquare, Square, Trash, Copy, Building, Layers } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Plus, Download, Save, X, Edit2, Trash2, CheckCircle2, Search, Filter, CheckSquare, Square, Trash, Copy, Building, Layers, RotateCcw } from 'lucide-react';
 import { FIME_BUILDINGS } from '../data/fimeBuildings3D';
 
-export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveSalones }) {
+export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveSalones, onResetDefaults }) {
   const [salones, setSalones] = useState(salonesList);
+
+  useEffect(() => {
+    setSalones(salonesList);
+  }, [salonesList]);
   const [filterEdificio, setFilterEdificio] = useState('ALL');
   const [filterTipo, setFilterTipo] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
@@ -193,6 +197,20 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
           </div>
 
           <div className="flex items-center gap-2">
+            {onResetDefaults && (
+              <button
+                onClick={() => {
+                  if (confirm('¿Restablecer salones al JSON original del proyecto?')) {
+                    onResetDefaults();
+                  }
+                }}
+                className="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
+                title="Borrar cambios guardados localmente y cargar salones.json"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Restablecer JSON</span>
+              </button>
+            )}
             <button
               onClick={handleExportJSON}
               className="bg-sky-500 hover:bg-sky-400 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md"

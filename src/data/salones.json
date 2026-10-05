@@ -1,6 +1,5 @@
 [
   {
-<<<<<<< Updated upstream
     "id": "aud-polivalente",
     "nombre": "Auditorio Polivalente",
     "codigo": "POLIVALENTE",
@@ -12,7 +11,13 @@
     "descripcion": "Auditorio principal para conferencias, eventos de la facultad y ponencias institucionales.",
     "referencia": "Ubicado en la zona central junto a la explanada del Edificio 1.",
     "foto": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
-    "tags": ["auditorio", "polivalente", "eventos", "conferencia", "planta baja"]
+    "tags": [
+      "auditorio",
+      "polivalente",
+      "eventos",
+      "conferencia",
+      "planta baja"
+    ]
   },
   {
     "id": "aud-pedro-cerda",
@@ -26,7 +31,12 @@
     "descripcion": "Auditorio para presentaciones académicas, exámenes globales y ceremonias.",
     "referencia": "Entrada principal del Edificio 7 cerca del área administrativa.",
     "foto": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
-    "tags": ["pedro cerda", "auditorio 7", "edificio 7", "conferencias"]
+    "tags": [
+      "pedro cerda",
+      "auditorio 7",
+      "edificio 7",
+      "conferencias"
+    ]
   },
   {
     "id": "aud-barragan",
@@ -40,11 +50,14 @@
     "descripcion": "Auditorio Magno para congresos internacionales y eventos solemnes.",
     "referencia": "Segundo piso del complejo CIDET.",
     "foto": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
-    "tags": ["barragan", "manuel l barragan", "cidet", "auditorio magno"]
+    "tags": [
+      "barragan",
+      "manuel l barragan",
+      "cidet",
+      "auditorio magno"
+    ]
   },
   {
-=======
->>>>>>> Stashed changes
     "id": "sal-1101",
     "nombre": "Salón 1101",
     "codigo": "1101",
@@ -1997,197 +2010,12 @@
     ]
   },
   {
-<<<<<<< Updated upstream
     "id": "lab-redes",
     "nombre": "Laboratorio de Redes y Computación",
     "codigo": "LAB REDES",
-    "tipo": "Laboratorio",
+    "tipo": "Laboratorio ",
     "edificioId": "cidte",
     "edificioNombre": "CIDET",
-=======
-    "id": "sal-7205",
-    "nombre": "Salón 7205",
-    "codigo": "7205",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7205",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-7206",
-    "nombre": "Salón 7206",
-    "codigo": "7206",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7206",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-7207",
-    "nombre": "Salón 7207",
-    "codigo": "7207",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7207",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-7208",
-    "nombre": "Salón 7208",
-    "codigo": "7208",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7208",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-7209",
-    "nombre": "Salón 7209",
-    "codigo": "7209",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7209",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-7215",
-    "nombre": "Salón 7215",
-    "codigo": "7215",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7215",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-7222",
-    "nombre": "Salón 7222",
-    "codigo": "7222",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7222",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-7223",
-    "nombre": "Salón 7223",
-    "codigo": "7223",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-7",
-    "edificioNombre": "Edificio 7",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 7, Piso 2",
-    "tags": [
-      "7223",
-      "edificio 7"
-    ]
-  },
-  {
-    "id": "sal-8100",
-    "nombre": "Salón 8100",
-    "codigo": "8100",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-8",
-    "edificioNombre": "Edificio 8",
-    "piso": 1,
-    "pisoTexto": "Piso 1 (Planta Baja)",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 8, Piso 1",
-    "tags": [
-      "8100",
-      "edificio 8"
-    ]
-  },
-  {
-    "id": "sal-8201",
-    "nombre": "Salón 8201",
-    "codigo": "8201",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-8",
-    "edificioNombre": "Edificio 8",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 8, Piso 2",
-    "tags": [
-      "8201",
-      "edificio 8"
-    ]
-  },
-  {
-    "id": "sal-8203",
-    "nombre": "Salón 8203",
-    "codigo": "8203",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-8",
-    "edificioNombre": "Edificio 8",
-    "piso": 2,
-    "pisoTexto": "Piso 2",
-    "descripcion": "Aula estándar.",
-    "referencia": "Edificio 8, Piso 2",
-    "tags": [
-      "8203",
-      "edificio 8"
-    ]
-  },
-  {
-    "id": "sal-8300",
-    "nombre": "Salón 8300",
-    "codigo": "8300",
-    "tipo": "Salón Estándar",
-    "edificioId": "edificio-8",
-    "edificioNombre": "Edificio 8",
->>>>>>> Stashed changes
     "piso": 3,
     "pisoTexto": "Piso 3",
     "descripcion": "Aula estándar.",

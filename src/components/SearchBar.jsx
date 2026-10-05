@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Search, X, MapPin, Building, GraduationCap, Award } from 'lucide-react';
 import { buscarSalones } from '../utils/searchEngine';
 
-export default function SearchBar({ onSelectSalón, selectedSalón }) {
+export default function SearchBar({ onSelectSalón, selectedSalón, salones }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -11,14 +11,14 @@ export default function SearchBar({ onSelectSalón, selectedSalón }) {
 
   useEffect(() => {
     if (query.trim().length > 0) {
-      const filtered = buscarSalones(query);
+      const filtered = buscarSalones(query, salones);
       setResults(filtered.slice(0, 7)); // Mostrar máximo 7 sugerencias para velocidad
       setIsOpen(true);
     } else {
       setResults([]);
       setIsOpen(false);
     }
-  }, [query]);
+  }, [query, salones]);
 
   // Si se selecciona desde fuera (ej. clic en mapa), actualizar input
   useEffect(() => {
