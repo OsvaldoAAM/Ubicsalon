@@ -1,5 +1,24 @@
 [
   {
+    "id": "sal-4242",
+    "nombre": "CIS1",
+    "codigo": "CIS1",
+    "tipo": "Laboratorio",
+    "edificioId": "edificio-7",
+    "piso": 1,
+    "pisoTexto": "Piso 1",
+    "descripcion": "",
+    "referencia": "",
+    "foto": "",
+    "tags": [
+      "cis1",
+      "cis1",
+      "edificio 7",
+      "piso 1"
+    ],
+    "edificioNombre": "Edificio 7"
+  },
+  {
     "id": "sal-7726",
     "nombre": "Laboratorio de Realidad Virtual e Inmersivq",
     "codigo": "LRVI",
