@@ -1,18 +1,18 @@
 [
   {
-    "id": "sal-4242",
-    "nombre": "CIS1",
+    "id": "sal-3520",
+    "nombre": "Cisco I",
     "codigo": "CIS1",
     "tipo": "Laboratorio",
     "edificioId": "edificio-7",
     "piso": 1,
-    "pisoTexto": "Piso 1",
-    "descripcion": "",
-    "referencia": "",
+    "pisoTexto": "Piso ",
+    "descripcion": "Salón de Cisco 1",
+    "referencia": "Alrededor del cuadro central",
     "foto": "",
     "tags": [
       "cis1",
-      "cis1",
+      "cisco i",
       "edificio 7",
       "piso 1"
     ],
