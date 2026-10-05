@@ -1,5 +1,24 @@
 [
   {
+    "id": "sal-0881",
+    "nombre": "Auditorio Ing. Remberto Sánchez Díaz",
+    "codigo": "Auditorio Ing. Remberto Sánchez Díaz",
+    "tipo": "Auditorio",
+    "edificioId": "edificio-7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Auditorio del edificio 7",
+    "referencia": "Se encuentra en la parte posterior del edificio, se requiere cruzar un edificio",
+    "foto": "",
+    "tags": [
+      "auditorio ing. remberto sánchez díaz",
+      "auditorio ing. remberto sánchez díaz",
+      "edificio 7",
+      "piso 2"
+    ],
+    "edificioNombre": "Edificio 7"
+  },
+  {
     "id": "sal-1101",
     "nombre": "Salón 1101",
     "codigo": "1101",
@@ -1452,8 +1471,11 @@
     "referencia": "Edificio 5, Piso 1",
     "tags": [
       "5111",
-      "edificio 5"
-    ]
+      "salón 5111",
+      "edificio 5",
+      "piso 1"
+    ],
+    "foto": "img/salones/edificio-5/sal-5111.webp"
   },
   {
     "id": "sal-6201",
