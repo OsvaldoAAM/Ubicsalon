@@ -271,8 +271,11 @@
     "referencia": "Edificio 2, Piso 1",
     "tags": [
       "2101",
-      "edificio 2"
-    ]
+      "salón 2101",
+      "edificio 2",
+      "piso 1"
+    ],
+    "foto": "img/salones/edificio-2/sal-2101.webp"
   },
   {
     "id": "sal-2102",
