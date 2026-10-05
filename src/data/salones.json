@@ -1,5 +1,24 @@
 [
   {
+    "id": "sal-7726",
+    "nombre": "Laboratorio de Realidad Virtual e Inmersivq",
+    "codigo": "LRVI",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "piso": 1,
+    "pisoTexto": "Piso 1",
+    "descripcion": "Laboratorio de realidad virtual ",
+    "referencia": "Enfrente de las escaleras del edificio 2",
+    "foto": "img/salones/edificio-9/sal-7726.webp",
+    "tags": [
+      "lrvi",
+      "laboratorio de realidad virtual e inmersivq",
+      "edificio 9",
+      "piso 1"
+    ],
+    "edificioNombre": "Edificio 9"
+  },
+  {
     "id": "sal-0881",
     "nombre": "Auditorio Ing. Remberto Sánchez Díaz",
     "codigo": "Auditorio Ing. Remberto Sánchez Díaz",
