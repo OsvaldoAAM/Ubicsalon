@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< Updated upstream
     "id": "aud-polivalente",
     "nombre": "Auditorio Polivalente",
     "codigo": "POLIVALENTE",
@@ -42,6 +43,8 @@
     "tags": ["barragan", "manuel l barragan", "cidet", "auditorio magno"]
   },
   {
+=======
+>>>>>>> Stashed changes
     "id": "sal-1101",
     "nombre": "Salón 1101",
     "codigo": "1101",
@@ -50,10 +53,124 @@
     "edificioNombre": "Edificio 1",
     "piso": 1,
     "pisoTexto": "Piso 1 (Planta Baja)",
-    "descripcion": "Aula estándar de capacidad para 40 alumnos equipada con proyector.",
-    "referencia": "Pasillo norte del Edificio 1, frente al jardín central.",
-    "foto": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
-    "tags": ["1101", "e1", "edificio 1", "piso 1"]
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 1",
+    "tags": [
+      "1101",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1102",
+    "nombre": "Salón 1102",
+    "codigo": "1102",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 1",
+    "tags": [
+      "1102",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1103",
+    "nombre": "Salón 1103",
+    "codigo": "1103",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 1",
+    "tags": [
+      "1103",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1104",
+    "nombre": "Salón 1104",
+    "codigo": "1104",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 1",
+    "tags": [
+      "1104",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1105",
+    "nombre": "Salón 1105",
+    "codigo": "1105",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 1",
+    "tags": [
+      "1105",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1201",
+    "nombre": "Salón 1201",
+    "codigo": "1201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 2",
+    "tags": [
+      "1201",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1202",
+    "nombre": "Salón 1202",
+    "codigo": "1202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 2",
+    "tags": [
+      "1202",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1203",
+    "nombre": "Salón 1203",
+    "codigo": "1203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 2",
+    "tags": [
+      "1203",
+      "edificio 1"
+    ]
   },
   {
     "id": "sal-1204",
@@ -64,10 +181,140 @@
     "edificioNombre": "Edificio 1",
     "piso": 2,
     "pisoTexto": "Piso 2",
-    "descripcion": "Salón de clases para materias de ciencias básicas y matemáticas.",
-    "referencia": "Segundo piso del Edificio 1, subiendo por la escalera izquierda.",
-    "foto": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-    "tags": ["1204", "e1", "edificio 1", "piso 2"]
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 2",
+    "tags": [
+      "1204",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1205",
+    "nombre": "Salón 1205",
+    "codigo": "1205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 2",
+    "tags": [
+      "1205",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1301",
+    "nombre": "Salón 1301",
+    "codigo": "1301",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 3",
+    "tags": [
+      "1301",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1302",
+    "nombre": "Salón 1302",
+    "codigo": "1302",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 3",
+    "tags": [
+      "1302",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1303",
+    "nombre": "Salón 1303",
+    "codigo": "1303",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 3",
+    "tags": [
+      "1303",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1304",
+    "nombre": "Salón 1304",
+    "codigo": "1304",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 3",
+    "tags": [
+      "1304",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-1305",
+    "nombre": "Salón 1305",
+    "codigo": "1305",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-1",
+    "edificioNombre": "Edificio 1",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 1, Piso 3",
+    "tags": [
+      "1305",
+      "edificio 1"
+    ]
+  },
+  {
+    "id": "sal-2101",
+    "nombre": "Salón 2101",
+    "codigo": "2101",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 1",
+    "tags": [
+      "2101",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2102",
+    "nombre": "Salón 2102",
+    "codigo": "2102",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 1",
+    "tags": [
+      "2102",
+      "edificio 2"
+    ]
   },
   {
     "id": "sal-2103",
@@ -78,38 +325,1660 @@
     "edificioNombre": "Edificio 2",
     "piso": 1,
     "pisoTexto": "Piso 1 (Planta Baja)",
-    "descripcion": "Aula climatizada para cursos generales e ingeniería.",
-    "referencia": "Edificio 2, pasillo principal lado este.",
-    "foto": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
-    "tags": ["2103", "e2", "edificio 2", "piso 1"]
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 1",
+    "tags": [
+      "2103",
+      "edificio 2"
+    ]
   },
   {
-    "id": "sal-2305",
-    "nombre": "Salón 2305",
-    "codigo": "2305",
+    "id": "sal-2104",
+    "nombre": "Salón 2104",
+    "codigo": "2104",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 1",
+    "tags": [
+      "2104",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2105",
+    "nombre": "Salón 2105",
+    "codigo": "2105",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 1",
+    "tags": [
+      "2105",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2106",
+    "nombre": "Salón 2106",
+    "codigo": "2106",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 1",
+    "tags": [
+      "2106",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2107",
+    "nombre": "Salón 2107",
+    "codigo": "2107",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 1",
+    "tags": [
+      "2107",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2201",
+    "nombre": "Salón 2201",
+    "codigo": "2201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 2",
+    "tags": [
+      "2201",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2202",
+    "nombre": "Salón 2202",
+    "codigo": "2202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 2",
+    "tags": [
+      "2202",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2203",
+    "nombre": "Salón 2203",
+    "codigo": "2203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 2",
+    "tags": [
+      "2203",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2204",
+    "nombre": "Salón 2204",
+    "codigo": "2204",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 2",
+    "tags": [
+      "2204",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2205",
+    "nombre": "Salón 2205",
+    "codigo": "2205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 2",
+    "tags": [
+      "2205",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2300",
+    "nombre": "Salón 2300",
+    "codigo": "2300",
     "tipo": "Salón Estándar",
     "edificioId": "edificio-2",
     "edificioNombre": "Edificio 2",
     "piso": 3,
     "pisoTexto": "Piso 3",
-    "descripcion": "Aula del tercer nivel del Edificio 2.",
-    "referencia": "Tercer nivel del Edificio 2, al lado del laboratorio informático.",
-    "foto": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
-    "tags": ["2305", "e2", "edificio 2", "piso 3"]
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 3",
+    "tags": [
+      "2300",
+      "edificio 2"
+    ]
   },
   {
-    "id": "lab-electronica",
-    "nombre": "Laboratorio de Electrónica",
-    "codigo": "LAB ELEC",
-    "tipo": "Laboratorio",
+    "id": "sal-2301",
+    "nombre": "Salón 2301",
+    "codigo": "2301",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 3",
+    "tags": [
+      "2301",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2303",
+    "nombre": "Salón 2303",
+    "codigo": "2303",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 3",
+    "tags": [
+      "2303",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-2304",
+    "nombre": "Salón 2304",
+    "codigo": "2304",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-2",
+    "edificioNombre": "Edificio 2",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 2, Piso 3",
+    "tags": [
+      "2304",
+      "edificio 2"
+    ]
+  },
+  {
+    "id": "sal-3101",
+    "nombre": "Salón 3101",
+    "codigo": "3101",
+    "tipo": "Salón Estándar",
     "edificioId": "edificio-3",
     "edificioNombre": "Edificio 3",
     "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3101",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3102",
+    "nombre": "Salón 3102",
+    "codigo": "3102",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3102",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3103",
+    "nombre": "Salón 3103",
+    "codigo": "3103",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3103",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3104",
+    "nombre": "Salón 3104",
+    "codigo": "3104",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3104",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3105",
+    "nombre": "Salón 3105",
+    "codigo": "3105",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3105",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3106",
+    "nombre": "Salón 3106",
+    "codigo": "3106",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3106",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3107",
+    "nombre": "Salón 3107",
+    "codigo": "3107",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3107",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3108",
+    "nombre": "Salón 3108",
+    "codigo": "3108",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3108",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3109",
+    "nombre": "Salón 3109",
+    "codigo": "3109",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 1",
+    "tags": [
+      "3109",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3201",
+    "nombre": "Salón 3201",
+    "codigo": "3201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3201",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3202",
+    "nombre": "Salón 3202",
+    "codigo": "3202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3202",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3203",
+    "nombre": "Salón 3203",
+    "codigo": "3203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3203",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3204",
+    "nombre": "Salón 3204",
+    "codigo": "3204",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3204",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3205",
+    "nombre": "Salón 3205",
+    "codigo": "3205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3205",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3206",
+    "nombre": "Salón 3206",
+    "codigo": "3206",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3206",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3207",
+    "nombre": "Salón 3207",
+    "codigo": "3207",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3207",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3208",
+    "nombre": "Salón 3208",
+    "codigo": "3208",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3208",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3209",
+    "nombre": "Salón 3209",
+    "codigo": "3209",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 2",
+    "tags": [
+      "3209",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3301",
+    "nombre": "Salón 3301",
+    "codigo": "3301",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3301",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3302",
+    "nombre": "Salón 3302",
+    "codigo": "3302",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3302",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3303",
+    "nombre": "Salón 3303",
+    "codigo": "3303",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3303",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3304",
+    "nombre": "Salón 3304",
+    "codigo": "3304",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3304",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3305",
+    "nombre": "Salón 3305",
+    "codigo": "3305",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3305",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3306",
+    "nombre": "Salón 3306",
+    "codigo": "3306",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3306",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3307",
+    "nombre": "Salón 3307",
+    "codigo": "3307",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3307",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3308",
+    "nombre": "Salón 3308",
+    "codigo": "3308",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3308",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-3309",
+    "nombre": "Salón 3309",
+    "codigo": "3309",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-3",
+    "edificioNombre": "Edificio 3",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 3, Piso 3",
+    "tags": [
+      "3309",
+      "edificio 3"
+    ]
+  },
+  {
+    "id": "sal-4100",
+    "nombre": "Salón 4100",
+    "codigo": "4100",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4100",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4102",
+    "nombre": "Salón 4102",
+    "codigo": "4102",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4102",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4103",
+    "nombre": "Salón 4103",
+    "codigo": "4103",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4103",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4105",
+    "nombre": "Salón 4105",
+    "codigo": "4105",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4105",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4106",
+    "nombre": "Salón 4106",
+    "codigo": "4106",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4106",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4107",
+    "nombre": "Salón 4107",
+    "codigo": "4107",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4107",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4108",
+    "nombre": "Salón 4108",
+    "codigo": "4108",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4108",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4109",
+    "nombre": "Salón 4109",
+    "codigo": "4109",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4109",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4110",
+    "nombre": "Salón 4110",
+    "codigo": "4110",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4110",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4111",
+    "nombre": "Salón 4111",
+    "codigo": "4111",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4111",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4112",
+    "nombre": "Salón 4112",
+    "codigo": "4112",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4112",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4113",
+    "nombre": "Salón 4113",
+    "codigo": "4113",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 1",
+    "tags": [
+      "4113",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4200",
+    "nombre": "Salón 4200",
+    "codigo": "4200",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4200",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4201",
+    "nombre": "Salón 4201",
+    "codigo": "4201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4201",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4202",
+    "nombre": "Salón 4202",
+    "codigo": "4202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4202",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4203",
+    "nombre": "Salón 4203",
+    "codigo": "4203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4203",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4204",
+    "nombre": "Salón 4204",
+    "codigo": "4204",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4204",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4205",
+    "nombre": "Salón 4205",
+    "codigo": "4205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4205",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4206",
+    "nombre": "Salón 4206",
+    "codigo": "4206",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4206",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4207",
+    "nombre": "Salón 4207",
+    "codigo": "4207",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4207",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4208",
+    "nombre": "Salón 4208",
+    "codigo": "4208",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4208",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4211",
+    "nombre": "Salón 4211",
+    "codigo": "4211",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4211",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4212",
+    "nombre": "Salón 4212",
+    "codigo": "4212",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4212",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-4213",
+    "nombre": "Salón 4213",
+    "codigo": "4213",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-4",
+    "edificioNombre": "Edificio 4",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 4, Piso 2",
+    "tags": [
+      "4213",
+      "edificio 4"
+    ]
+  },
+  {
+    "id": "sal-5000",
+    "nombre": "Salón 5000",
+    "codigo": "5000",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 0,
     "pisoTexto": "Planta Baja",
-    "descripcion": "Laboratorio equipado con osciloscopios, fuentes de poder y mesas de trabajo de circuitos.",
-    "referencia": "Planta baja del Edificio 3, acceso directo desde el pasillo del centro.",
-    "foto": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-    "tags": ["laboratorio", "electronica", "circuitos", "lab elec", "edificio 3"]
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 0",
+    "tags": [
+      "5000",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5001",
+    "nombre": "Salón 5001",
+    "codigo": "5001",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 0,
+    "pisoTexto": "Planta Baja",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 0",
+    "tags": [
+      "5001",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5002",
+    "nombre": "Salón 5002",
+    "codigo": "5002",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 0,
+    "pisoTexto": "Planta Baja",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 0",
+    "tags": [
+      "5002",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5101",
+    "nombre": "Salón 5101",
+    "codigo": "5101",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 1",
+    "tags": [
+      "5101",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5102",
+    "nombre": "Salón 5102",
+    "codigo": "5102",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 1",
+    "tags": [
+      "5102",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5105",
+    "nombre": "Salón 5105",
+    "codigo": "5105",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 1",
+    "tags": [
+      "5105",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5106",
+    "nombre": "Salón 5106",
+    "codigo": "5106",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 1",
+    "tags": [
+      "5106",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5108",
+    "nombre": "Salón 5108",
+    "codigo": "5108",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 1",
+    "tags": [
+      "5108",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-5111",
+    "nombre": "Salón 5111",
+    "codigo": "5111",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-5",
+    "edificioNombre": "Edificio 5",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 5, Piso 1",
+    "tags": [
+      "5111",
+      "edificio 5"
+    ]
+  },
+  {
+    "id": "sal-6201",
+    "nombre": "Salón 6201",
+    "codigo": "6201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 2",
+    "tags": [
+      "6201",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6202",
+    "nombre": "Salón 6202",
+    "codigo": "6202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 2",
+    "tags": [
+      "6202",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6300",
+    "nombre": "Salón 6300",
+    "codigo": "6300",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6300",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6301",
+    "nombre": "Salón 6301",
+    "codigo": "6301",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6301",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6302",
+    "nombre": "Salón 6302",
+    "codigo": "6302",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6302",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6303",
+    "nombre": "Salón 6303",
+    "codigo": "6303",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6303",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6304",
+    "nombre": "Salón 6304",
+    "codigo": "6304",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6304",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6305",
+    "nombre": "Salón 6305",
+    "codigo": "6305",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6305",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6306",
+    "nombre": "Salón 6306",
+    "codigo": "6306",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6306",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6307",
+    "nombre": "Salón 6307",
+    "codigo": "6307",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6307",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-6308",
+    "nombre": "Salón 6308",
+    "codigo": "6308",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-6",
+    "edificioNombre": "Edificio 6",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 6, Piso 3",
+    "tags": [
+      "6308",
+      "edificio 6"
+    ]
+  },
+  {
+    "id": "sal-7101",
+    "nombre": "Salón 7101",
+    "codigo": "7101",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7101",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7102",
+    "nombre": "Salón 7102",
+    "codigo": "7102",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7102",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7103",
+    "nombre": "Salón 7103",
+    "codigo": "7103",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7103",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7104",
+    "nombre": "Salón 7104",
+    "codigo": "7104",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7104",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7105",
+    "nombre": "Salón 7105",
+    "codigo": "7105",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7105",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7106",
+    "nombre": "Salón 7106",
+    "codigo": "7106",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7106",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7107",
+    "nombre": "Salón 7107",
+    "codigo": "7107",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7107",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7108",
+    "nombre": "Salón 7108",
+    "codigo": "7108",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7108",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7111",
+    "nombre": "Salón 7111",
+    "codigo": "7111",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7111",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7116",
+    "nombre": "Salón 7116",
+    "codigo": "7116",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7116",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7117",
+    "nombre": "Salón 7117",
+    "codigo": "7117",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7117",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7118",
+    "nombre": "Salón 7118",
+    "codigo": "7118",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7118",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7119",
+    "nombre": "Salón 7119",
+    "codigo": "7119",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7119",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7120",
+    "nombre": "Salón 7120",
+    "codigo": "7120",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7120",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7121",
+    "nombre": "Salón 7121",
+    "codigo": "7121",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7121",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7125",
+    "nombre": "Salón 7125",
+    "codigo": "7125",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 1",
+    "tags": [
+      "7125",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7201",
+    "nombre": "Salón 7201",
+    "codigo": "7201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7201",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7202",
+    "nombre": "Salón 7202",
+    "codigo": "7202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7202",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7203",
+    "nombre": "Salón 7203",
+    "codigo": "7203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7203",
+      "edificio 7"
+    ]
   },
   {
     "id": "sal-7204",
@@ -120,37 +1989,644 @@
     "edificioNombre": "Edificio 7",
     "piso": 2,
     "pisoTexto": "Piso 2",
-    "descripcion": "Salón de clases para materias avanzadas de ingeniería eléctrica y mecánica.",
-    "referencia": "Edificio 7, segundo piso a un costado del elevador.",
-    "foto": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&w=800&q=80",
-    "tags": ["7204", "e7", "edificio 7", "piso 2"]
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7204",
+      "edificio 7"
+    ]
   },
   {
+<<<<<<< Updated upstream
     "id": "lab-redes",
     "nombre": "Laboratorio de Redes y Computación",
     "codigo": "LAB REDES",
     "tipo": "Laboratorio",
     "edificioId": "cidet",
     "edificioNombre": "CIDET",
-    "piso": 3,
-    "pisoTexto": "Piso 3",
-    "descripcion": "Laboratorio especializado en enrutadores, switches Cisco y programación de redes.",
-    "referencia": "Tercer piso del CIDET, ala sur.",
-    "foto": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
-    "tags": ["redes", "computacion", "cidet", "cisco", "lab redes"]
+=======
+    "id": "sal-7205",
+    "nombre": "Salón 7205",
+    "codigo": "7205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7205",
+      "edificio 7"
+    ]
   },
   {
-    "id": "sal-11201",
-    "nombre": "Salón 11201",
-    "codigo": "11201",
+    "id": "sal-7206",
+    "nombre": "Salón 7206",
+    "codigo": "7206",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7206",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7207",
+    "nombre": "Salón 7207",
+    "codigo": "7207",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7207",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7208",
+    "nombre": "Salón 7208",
+    "codigo": "7208",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7208",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7209",
+    "nombre": "Salón 7209",
+    "codigo": "7209",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7209",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7215",
+    "nombre": "Salón 7215",
+    "codigo": "7215",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7215",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7222",
+    "nombre": "Salón 7222",
+    "codigo": "7222",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7222",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-7223",
+    "nombre": "Salón 7223",
+    "codigo": "7223",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-7",
+    "edificioNombre": "Edificio 7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 7, Piso 2",
+    "tags": [
+      "7223",
+      "edificio 7"
+    ]
+  },
+  {
+    "id": "sal-8100",
+    "nombre": "Salón 8100",
+    "codigo": "8100",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-8",
+    "edificioNombre": "Edificio 8",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 8, Piso 1",
+    "tags": [
+      "8100",
+      "edificio 8"
+    ]
+  },
+  {
+    "id": "sal-8201",
+    "nombre": "Salón 8201",
+    "codigo": "8201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-8",
+    "edificioNombre": "Edificio 8",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 8, Piso 2",
+    "tags": [
+      "8201",
+      "edificio 8"
+    ]
+  },
+  {
+    "id": "sal-8203",
+    "nombre": "Salón 8203",
+    "codigo": "8203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-8",
+    "edificioNombre": "Edificio 8",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 8, Piso 2",
+    "tags": [
+      "8203",
+      "edificio 8"
+    ]
+  },
+  {
+    "id": "sal-8300",
+    "nombre": "Salón 8300",
+    "codigo": "8300",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-8",
+    "edificioNombre": "Edificio 8",
+>>>>>>> Stashed changes
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 8, Piso 3",
+    "tags": [
+      "8300",
+      "edificio 8"
+    ]
+  },
+  {
+    "id": "sal-9102",
+    "nombre": "Salón 9102",
+    "codigo": "9102",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 1",
+    "tags": [
+      "9102",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9103",
+    "nombre": "Salón 9103",
+    "codigo": "9103",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 1",
+    "tags": [
+      "9103",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9104",
+    "nombre": "Salón 9104",
+    "codigo": "9104",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 1",
+    "tags": [
+      "9104",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9105",
+    "nombre": "Salón 9105",
+    "codigo": "9105",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 1,
+    "pisoTexto": "Piso 1 (Planta Baja)",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 1",
+    "tags": [
+      "9105",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9201",
+    "nombre": "Salón 9201",
+    "codigo": "9201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 2",
+    "tags": [
+      "9201",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9202",
+    "nombre": "Salón 9202",
+    "codigo": "9202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 2",
+    "tags": [
+      "9202",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9203",
+    "nombre": "Salón 9203",
+    "codigo": "9203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 2",
+    "tags": [
+      "9203",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9204",
+    "nombre": "Salón 9204",
+    "codigo": "9204",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 2",
+    "tags": [
+      "9204",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9205",
+    "nombre": "Salón 9205",
+    "codigo": "9205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 2",
+    "tags": [
+      "9205",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9301",
+    "nombre": "Salón 9301",
+    "codigo": "9301",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 3",
+    "tags": [
+      "9301",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9303",
+    "nombre": "Salón 9303",
+    "codigo": "9303",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 3",
+    "tags": [
+      "9303",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-9304",
+    "nombre": "Salón 9304",
+    "codigo": "9304",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-9",
+    "edificioNombre": "Edificio 9",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 9, Piso 3",
+    "tags": [
+      "9304",
+      "edificio 9"
+    ]
+  },
+  {
+    "id": "sal-11202",
+    "nombre": "Salón 11202",
+    "codigo": "11202",
     "tipo": "Salón Estándar",
     "edificioId": "edificio-11",
     "edificioNombre": "Edificio 11",
     "piso": 2,
     "pisoTexto": "Piso 2",
-    "descripcion": "Salón amplio en el edificio 11 para materias de tronco común e idiomas.",
-    "referencia": "Edificio 11, segundo nivel frente a la explanada norte.",
-    "foto": "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80",
-    "tags": ["11201", "e11", "edificio 11", "piso 2"]
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 11, Piso 2",
+    "tags": [
+      "11202",
+      "edificio 11"
+    ]
+  },
+  {
+    "id": "sal-11203",
+    "nombre": "Salón 11203",
+    "codigo": "11203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-11",
+    "edificioNombre": "Edificio 11",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 11, Piso 2",
+    "tags": [
+      "11203",
+      "edificio 11"
+    ]
+  },
+  {
+    "id": "sal-11204",
+    "nombre": "Salón 11204",
+    "codigo": "11204",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-11",
+    "edificioNombre": "Edificio 11",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 11, Piso 2",
+    "tags": [
+      "11204",
+      "edificio 11"
+    ]
+  },
+  {
+    "id": "sal-11205",
+    "nombre": "Salón 11205",
+    "codigo": "11205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-11",
+    "edificioNombre": "Edificio 11",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 11, Piso 2",
+    "tags": [
+      "11205",
+      "edificio 11"
+    ]
+  },
+  {
+    "id": "sal-11301",
+    "nombre": "Salón 11301",
+    "codigo": "11301",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-11",
+    "edificioNombre": "Edificio 11",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 11, Piso 3",
+    "tags": [
+      "11301",
+      "edificio 11"
+    ]
+  },
+  {
+    "id": "sal-11302",
+    "nombre": "Salón 11302",
+    "codigo": "11302",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-11",
+    "edificioNombre": "Edificio 11",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 11, Piso 3",
+    "tags": [
+      "11302",
+      "edificio 11"
+    ]
+  },
+  {
+    "id": "sal-11304",
+    "nombre": "Salón 11304",
+    "codigo": "11304",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-11",
+    "edificioNombre": "Edificio 11",
+    "piso": 3,
+    "pisoTexto": "Piso 3",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 11, Piso 3",
+    "tags": [
+      "11304",
+      "edificio 11"
+    ]
+  },
+  {
+    "id": "sal-12201",
+    "nombre": "Salón 12201",
+    "codigo": "12201",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12201",
+      "edificio 12"
+    ]
+  },
+  {
+    "id": "sal-12202",
+    "nombre": "Salón 12202",
+    "codigo": "12202",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12202",
+      "edificio 12"
+    ]
+  },
+  {
+    "id": "sal-12203",
+    "nombre": "Salón 12203",
+    "codigo": "12203",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12203",
+      "edificio 12"
+    ]
+  },
+  {
+    "id": "sal-12204",
+    "nombre": "Salón 12204",
+    "codigo": "12204",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12204",
+      "edificio 12"
+    ]
+  },
+  {
+    "id": "sal-12205",
+    "nombre": "Salón 12205",
+    "codigo": "12205",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12205",
+      "edificio 12"
+    ]
+  },
+  {
+    "id": "sal-12206",
+    "nombre": "Salón 12206",
+    "codigo": "12206",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12206",
+      "edificio 12"
+    ]
+  },
+  {
+    "id": "sal-12207",
+    "nombre": "Salón 12207",
+    "codigo": "12207",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12207",
+      "edificio 12"
+    ]
+  },
+  {
+    "id": "sal-12208",
+    "nombre": "Salón 12208",
+    "codigo": "12208",
+    "tipo": "Salón Estándar",
+    "edificioId": "edificio-12",
+    "edificioNombre": "Edificio 12",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Aula estándar.",
+    "referencia": "Edificio 12, Piso 2",
+    "tags": [
+      "12208",
+      "edificio 12"
+    ]
   }
 ]
