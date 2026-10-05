@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Compass, Wifi, WifiOff, Settings } from 'lucide-react';
 
-export default function Header({ onOpenAdmin }) {
+export default function Header({ onOpenAdmin, showAdminButton = false }) {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [clickCount, setClickCount] = useState(0);
+  const [unlockedAdmin, setUnlockedAdmin] = useState(showAdminButton);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -11,16 +13,37 @@ export default function Header({ onOpenAdmin }) {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
+    // Detectar ?admin=1 o #admin en la URL
+    if (window.location.search.includes('admin') || window.location.hash.includes('admin')) {
+      setUnlockedAdmin(true);
+    }
+
     return () => {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
+  useEffect(() => {
+    if (showAdminButton) setUnlockedAdmin(true);
+  }, [showAdminButton]);
+
+  const handleSecretClick = () => {
+    const next = clickCount + 1;
+    if (next >= 3) {
+      setUnlockedAdmin(true);
+      onOpenAdmin();
+      setClickCount(0);
+    } else {
+      setClickCount(next);
+      setTimeout(() => setClickCount(0), 2000);
+    }
+  };
+
   return (
     <header className="w-full bg-neutral-900/85 backdrop-blur-2xl border border-neutral-800/80 rounded-2xl px-3.5 py-2.5 flex items-center justify-between shadow-2xl">
-      {/* Brand & Logo */}
-      <div className="flex items-center gap-2.5">
+      {/* Brand & Logo (3 clics en el logo abren el modo admin secreto) */}
+      <div className="flex items-center gap-2.5 cursor-pointer select-none" onClick={handleSecretClick}>
         <div className="p-1.5 rounded-xl bg-gradient-to-tr from-primary-500 to-indigo-600 text-white shadow-md shadow-primary-500/20">
           <Compass className="w-4 h-4" />
         </div>
@@ -31,7 +54,7 @@ export default function Header({ onOpenAdmin }) {
         </div>
       </div>
 
-      {/* Right Controls: Offline Badge + Admin Button */}
+      {/* Right Controls: Offline Badge + Botón Admin (solo si se activó por URL o gesto secreto) */}
       <div className="flex items-center gap-2">
         <div className={`px-2 py-0.5 rounded-full text-[10px] font-semibold flex items-center gap-1 border backdrop-blur-md ${
           isOnline
@@ -51,14 +74,17 @@ export default function Header({ onOpenAdmin }) {
           )}
         </div>
 
-        <button
-          onClick={onOpenAdmin}
-          className="p-1.5 rounded-xl bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 border border-neutral-700/70 transition-all text-xs"
-          title="Panel Editor"
-        >
-          <Settings className="w-3.5 h-3.5 text-primary-400" />
-        </button>
+        {unlockedAdmin && (
+          <button
+            onClick={onOpenAdmin}
+            className="p-1.5 rounded-xl bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 border border-neutral-700/70 transition-all text-xs"
+            title="Panel Editor Privado"
+          >
+            <Settings className="w-3.5 h-3.5 text-primary-400" />
+          </button>
+        )}
       </div>
     </header>
   );
 }
+

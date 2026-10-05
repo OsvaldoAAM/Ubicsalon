@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import IsometricMap from './components/IsometricMap';
@@ -22,6 +22,12 @@ export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isListExpanded, setIsListExpanded] = useState(false);
   const [resetCamCount, setResetCamCount] = useState(0);
+
+  useEffect(() => {
+    if (window.location.search.includes('admin') || window.location.hash.includes('admin')) {
+      setIsAdminOpen(true);
+    }
+  }, []);
 
   const handleSelectSalón = (salon) => {
     setSelectedSalón(salon);

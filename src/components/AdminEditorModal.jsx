@@ -1,6 +1,6 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import JSZip from 'jszip';
-import { Plus, Download, Save, X, Edit2, Trash2, CheckCircle2, Search, Filter, CheckSquare, Square, Trash, Copy, Building, Layers, RotateCcw, Upload, Package, Image as ImageIcon } from 'lucide-react';
+import { Plus, Save, X, Edit2, Trash2, CheckCircle2, Search, CheckSquare, Square, Trash, Copy, Building, Layers, RotateCcw, Upload, Package, Image as ImageIcon, Key, RefreshCw, ShieldCheck, Camera } from 'lucide-react';
 import { FIME_BUILDINGS } from '../data/fimeBuildings3D';
 import {
   borrarFotoLocal,
@@ -11,6 +11,7 @@ import {
   rutaFotoSalon,
   useFotoUrl
 } from '../utils/imagenes';
+import { syncFotoAndDataToGitHub } from '../utils/githubSync';
 
 export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveSalones, onResetDefaults }) {
   const [salones, setSalones] = useState(salonesList);
@@ -44,20 +45,25 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
   const [procesandoFoto, setProcesandoFoto] = useState(false);
   const [fotoError, setFotoError] = useState('');
   const [fotoVersion, setFotoVersion] = useState(0);
+
+  // Estados de Sincronización Directa con GitHub (sin ZIPs)
+  const [githubToken, setGithubToken] = useState(() => localStorage.getItem('ubicsalon_github_token') || '');
+  const [showTokenPanel, setShowTokenPanel] = useState(false);
+  const [isSyncingGitHub, setIsSyncingGitHub] = useState(false);
+  const [syncStatusMsg, setSyncStatusMsg] = useState('');
+  const pendingFotoBlobRef = useRef(null);
+
   const fotoPreview = useFotoUrl(formData.foto, fotoVersion);
 
   // Filtrado reactivo de salones
   const filteredSalones = useMemo(() => {
     return salones.filter(item => {
-      // Filtro de Edificio
       if (filterEdificio !== 'ALL' && item.edificioId !== filterEdificio) {
         return false;
       }
-      // Filtro de Tipo
       if (filterTipo !== 'ALL' && item.tipo !== filterTipo) {
         return false;
       }
-      // Buscador interno por código o nombre
       if (searchQuery.trim() !== '') {
         const q = searchQuery.toLowerCase();
         const matchesName = item.nombre.toLowerCase().includes(q);
@@ -156,7 +162,16 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
     setActiveTab('FORM');
   };
 
-  // Subida de foto: se comprime a WebP y queda en IndexedDB hasta exportar el ZIP
+  const handleSaveGithubToken = (newToken) => {
+    setGithubToken(newToken);
+    if (newToken.trim()) {
+      localStorage.setItem('ubicsalon_github_token', newToken.trim());
+    } else {
+      localStorage.removeItem('ubicsalon_github_token');
+    }
+  };
+
+  // Subida/Captura de foto desde cámara: se comprime a WebP
   const handleFotoChange = async (e) => {
     const file = e.target.files?.[0];
     e.target.value = '';
@@ -166,6 +181,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
     setProcesandoFoto(true);
     try {
       const blob = await procesarImagen(file);
+      pendingFotoBlobRef.current = blob;
       const ruta = rutaFotoSalon(formData.edificioId, formData.id);
       await guardarFotoLocal(ruta, blob);
       setFormData((prev) => ({ ...prev, foto: ruta }));
@@ -178,6 +194,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
   };
 
   const handleQuitarFoto = async () => {
+    pendingFotoBlobRef.current = null;
     if (esRutaRelativa(formData.foto)) {
       await borrarFotoLocal(formData.foto).catch(() => { });
     }
@@ -185,7 +202,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
     setFotoVersion((v) => v + 1);
   };
 
-  const handleSaveForm = (e) => {
+  const handleSaveForm = async (e) => {
     e.preventDefault();
     const edificioObj = FIME_BUILDINGS.find(b => b.id === formData.edificioId);
     const tagsArr = [
@@ -210,6 +227,35 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
 
     setSalones(updatedList);
     onSaveSalones(updatedList);
+
+    // Si hay un Token de GitHub guardado, sincronizar directamente en la nube
+    if (githubToken.trim()) {
+      setIsSyncingGitHub(true);
+      setSyncStatusMsg('Iniciando sincronización con GitHub...');
+      try {
+        await syncFotoAndDataToGitHub({
+          token: githubToken.trim(),
+          edificioId: formData.edificioId,
+          salonId: formData.id,
+          photoBlob: pendingFotoBlobRef.current,
+          updatedSalonesList: updatedList,
+          onStatusUpdate: (msg) => setSyncStatusMsg(msg)
+        });
+        pendingFotoBlobRef.current = null;
+        setTimeout(() => {
+          setIsSyncingGitHub(false);
+          setSyncStatusMsg('');
+          setEditingItem(null);
+          setActiveTab('LIST');
+        }, 1500);
+        return;
+      } catch (err) {
+        alert(`🚨 Error al sincronizar con GitHub: ${err.message}\n\nLos cambios se guardaron localmente en tu dispositivo.`);
+        setIsSyncingGitHub(false);
+        setSyncStatusMsg('');
+      }
+    }
+
     setEditingItem(null);
     setActiveTab('LIST');
   };
@@ -275,11 +321,26 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
               ⚙️ Gestión y Modificación de Salones FIME
             </h2>
             <p className="text-xs text-neutral-400">
-              Filtra por edificio, elimina en masa o exporta el <code>ZIP</code> con <code>salones.json</code> y fotos.
+              {githubToken
+                ? '🟢 Sincronización directa activada (Subida inmediata a GitHub sin ZIPs).'
+                : 'Configura tu Token de GitHub para guardar fotos directamente desde el celular.'}
             </p>
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowTokenPanel(!showTokenPanel)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border ${
+                githubToken
+                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                  : 'bg-primary-500/20 text-primary-300 border-primary-500/30 hover:bg-primary-500/30'
+              }`}
+              title="Configurar Token de GitHub para guardar directamente sin ZIPs"
+            >
+              <Key className="w-3.5 h-3.5" />
+              <span>{githubToken ? 'GitHub Conectado' : 'Conectar GitHub'}</span>
+            </button>
+
             {onResetDefaults && (
               <button
                 onClick={() => {
@@ -294,23 +355,17 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                 <span>Restablecer JSON</span>
               </button>
             )}
-            <button
-              onClick={handleExportJSON}
-              className="bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
-              title="Descargar solo salones.json"
-            >
-              {downloadSuccess ? <CheckCircle2 className="w-4 h-4" /> : <Download className="w-4 h-4" />}
-              <span>{downloadSuccess ? '¡Descargado!' : 'JSON'}</span>
-            </button>
+
             <button
               onClick={handleExportZip}
               disabled={exportandoZip}
-              className="bg-primary-500 hover:bg-primary-400 disabled:opacity-60 text-neutral-950 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md"
-              title="Descargar ZIP con salones.json y las fotos nuevas, listo para descomprimir en la raíz del proyecto"
+              className="bg-neutral-800 hover:bg-neutral-700 disabled:opacity-60 text-neutral-200 border border-neutral-700 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
+              title="Descargar respaldo ZIP local"
             >
               {zipInfo ? <CheckCircle2 className="w-4 h-4" /> : <Package className="w-4 h-4" />}
-              <span>{exportandoZip ? 'Generando…' : zipInfo || 'Exportar ZIP'}</span>
+              <span>{exportandoZip ? 'Generando…' : zipInfo || 'Resp. ZIP'}</span>
             </button>
+
             <button
               onClick={onClose}
               className="p-1.5 rounded-xl text-neutral-400 hover:bg-neutral-800 hover:text-white"
@@ -319,6 +374,54 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
             </button>
           </div>
         </div>
+
+        {/* BANNER / DRAWER PARA CONFIGURACIÓN DE TOKEN GITHUB */}
+        {showTokenPanel && (
+          <div className="bg-neutral-950 p-4 border-b border-neutral-800 text-xs space-y-2 animate-in slide-in-from-top-2 duration-150">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-neutral-200 flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Clave de Acceso GitHub (Token de colaborador)</span>
+              </span>
+              <a
+                href="https://github.com/settings/tokens/new?scopes=repo&description=Ubicsalon+Cam+Token"
+                target="_blank"
+                rel="noreferrer"
+                className="text-primary-400 hover:underline text-[11px] font-semibold"
+              >
+                Crear Token en GitHub →
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="password"
+                placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                value={githubToken}
+                onChange={(e) => handleSaveGithubToken(e.target.value)}
+                className="flex-1 px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 outline-none focus:border-primary-500 font-mono"
+              />
+              {githubToken && (
+                <button
+                  onClick={() => handleSaveGithubToken('')}
+                  className="px-3 py-2 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 rounded-xl font-semibold"
+                >
+                  Desconectar
+                </button>
+              )}
+            </div>
+            <p className="text-[11px] text-neutral-400">
+              Al guardar un Token, cada foto que tomes con la cámara de tu celular se subirá <strong>directamente a GitHub</strong> y Cloudflare desplegará la app pública automáticamente en ~30 segundos.
+            </p>
+          </div>
+        )}
+
+        {/* NOTIFICACIÓN DE ESTADO DE SINCRONIZACIÓN EN TIEMPO REAL */}
+        {isSyncingGitHub && (
+          <div className="bg-primary-950/90 border-b border-primary-500/40 p-3 text-xs text-primary-200 flex items-center justify-center gap-2 font-semibold animate-pulse">
+            <RefreshCw className="w-4 h-4 animate-spin text-primary-400" />
+            <span>{syncStatusMsg || 'Sincronizando con GitHub...'}</span>
+          </div>
+        )}
 
         {/* NAVEGACIÓN SECUNDARIA Y FILTROS */}
         <div className="px-5 py-3 border-b border-neutral-800 bg-neutral-950/60 flex flex-col md:flex-row items-center justify-between gap-3">
@@ -615,10 +718,22 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                       )}
                     </div>
                     <div className="flex-1 space-y-1.5">
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <label className="cursor-pointer bg-primary-500 hover:bg-primary-400 text-neutral-950 px-3 py-1.5 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-md">
+                          <Camera className="w-3.5 h-3.5" />
+                          <span>{procesandoFoto ? 'Procesando…' : formData.foto ? 'Cambiar / Cámara' : 'Tomar Foto (Cámara)'}</span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            capture="environment"
+                            disabled={procesandoFoto}
+                            onChange={handleFotoChange}
+                            className="hidden"
+                          />
+                        </label>
                         <label className="cursor-pointer bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 px-3 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
                           <Upload className="w-3.5 h-3.5" />
-                          <span>{procesandoFoto ? 'Procesando…' : formData.foto ? 'Cambiar foto' : 'Subir foto'}</span>
+                          <span>Galería</span>
                           <input
                             type="file"
                             accept="image/*"
@@ -631,17 +746,19 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                           <button
                             type="button"
                             onClick={handleQuitarFoto}
-                            className="text-xs text-rose-400 hover:text-rose-300 font-semibold"
+                            className="text-xs text-rose-400 hover:text-rose-300 font-semibold px-2 py-1"
                           >
                             Quitar
                           </button>
                         )}
                       </div>
-                      <p className="text-[10px] text-neutral-500 leading-snug">
-                        Se comprime a WebP (800 px). Usa «Exportar ZIP» para añadirla al proyecto.
+                      <p className="text-[10px] text-neutral-400 leading-snug">
+                        {githubToken
+                          ? '⚡ La foto y datos se subirán directamente a GitHub al guardar.'
+                          : 'Se comprime a WebP (800 px). Conecta GitHub arriba para subida directa.'}
                       </p>
                       {formData.foto && (
-                        <p className="text-[10px] text-neutral-500 truncate" title={formData.foto}>{formData.foto}</p>
+                        <p className="text-[10px] text-primary-400 truncate" title={formData.foto}>{formData.foto}</p>
                       )}
                       {fotoError && <p className="text-[11px] text-rose-400">{fotoError}</p>}
                     </div>
