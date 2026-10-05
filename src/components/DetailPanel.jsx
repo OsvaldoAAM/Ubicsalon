@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Building, Layers, MapPin, Info, X, ExternalLink, Image as ImageIcon } from 'lucide-react';
+import { useFotoUrl } from '../utils/imagenes';
 
 export default function DetailPanel({ salon, onClose }) {
+  const fotoUrl = useFotoUrl(salon?.foto);
+  const [fotoFallida, setFotoFallida] = useState(null);
+
   if (!salon) return null;
+
+  const mostrarFoto = salon.foto && fotoUrl && fotoFallida !== fotoUrl;
 
   return (
     <div className="w-full bg-slate-900/95 backdrop-blur-2xl border border-slate-800 rounded-3xl p-5 md:p-6 shadow-2xl animate-in slide-in-from-bottom-4 duration-200">
@@ -29,14 +35,15 @@ export default function DetailPanel({ salon, onClose }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-4">
         {/* Fotografía de Referencia Exterior */}
         <div className="relative group overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 aspect-video md:aspect-auto h-48 md:h-full">
-          {salon.foto ? (
+          {mostrarFoto ? (
             <img
-              src={salon.foto}
+              src={fotoUrl}
               alt={`Foto de ${salon.nombre}`}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
+              onError={() => setFotoFallida(fotoUrl)}
             />
-          ) : (
+          ) : salon.foto && !fotoUrl ? null : (
             <div className="w-full h-full flex flex-col items-center justify-center text-slate-600 gap-2">
               <ImageIcon className="w-8 h-8" />
               <span className="text-xs">Sin fotografía asignada</span>

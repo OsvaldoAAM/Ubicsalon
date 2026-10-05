@@ -1,6 +1,16 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Plus, Download, Save, X, Edit2, Trash2, CheckCircle2, Search, Filter, CheckSquare, Square, Trash, Copy, Building, Layers, RotateCcw } from 'lucide-react';
+import JSZip from 'jszip';
+import { Plus, Download, Save, X, Edit2, Trash2, CheckCircle2, Search, Filter, CheckSquare, Square, Trash, Copy, Building, Layers, RotateCcw, Upload, Package, Image as ImageIcon } from 'lucide-react';
 import { FIME_BUILDINGS } from '../data/fimeBuildings3D';
+import {
+  borrarFotoLocal,
+  esRutaRelativa,
+  guardarFotoLocal,
+  obtenerFotoLocal,
+  procesarImagen,
+  rutaFotoSalon,
+  useFotoUrl
+} from '../utils/imagenes';
 
 export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveSalones, onResetDefaults }) {
   const [salones, setSalones] = useState(salonesList);
@@ -29,6 +39,12 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
     tags: []
   });
   const [downloadSuccess, setDownloadSuccess] = useState(false);
+  const [zipInfo, setZipInfo] = useState('');
+  const [exportandoZip, setExportandoZip] = useState(false);
+  const [procesandoFoto, setProcesandoFoto] = useState(false);
+  const [fotoError, setFotoError] = useState('');
+  const [fotoVersion, setFotoVersion] = useState(0);
+  const fotoPreview = useFotoUrl(formData.foto, fotoVersion);
 
   // Filtrado reactivo de salones
   const filteredSalones = useMemo(() => {
@@ -132,11 +148,41 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
         pisoTexto: 'Piso 1',
         descripcion: '',
         referencia: '',
-        foto: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80',
+        foto: '',
         tags: []
       });
     }
+    setFotoError('');
     setActiveTab('FORM');
+  };
+
+  // Subida de foto: se comprime a WebP y queda en IndexedDB hasta exportar el ZIP
+  const handleFotoChange = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+
+    setFotoError('');
+    setProcesandoFoto(true);
+    try {
+      const blob = await procesarImagen(file);
+      const ruta = rutaFotoSalon(formData.edificioId, formData.id);
+      await guardarFotoLocal(ruta, blob);
+      setFormData((prev) => ({ ...prev, foto: ruta }));
+      setFotoVersion((v) => v + 1);
+    } catch (err) {
+      setFotoError(err.message || 'No se pudo procesar la imagen.');
+    } finally {
+      setProcesandoFoto(false);
+    }
+  };
+
+  const handleQuitarFoto = async () => {
+    if (esRutaRelativa(formData.foto)) {
+      await borrarFotoLocal(formData.foto).catch(() => {});
+    }
+    setFormData((prev) => ({ ...prev, foto: '' }));
+    setFotoVersion((v) => v + 1);
   };
 
   const handleSaveForm = (e) => {
@@ -181,6 +227,43 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
     setTimeout(() => setDownloadSuccess(false), 3000);
   };
 
+  // Paquete con la misma estructura del proyecto: descomprimir en la raíz y listo
+  const handleExportZip = async () => {
+    setExportandoZip(true);
+    try {
+      const zip = new JSZip();
+      zip.file('src/data/salones.json', JSON.stringify(salones, null, 2));
+
+      const rutasIncluidas = new Set();
+      for (const s of salones) {
+        if (!esRutaRelativa(s.foto) || rutasIncluidas.has(s.foto)) continue;
+        const blob = await obtenerFotoLocal(s.foto).catch(() => null);
+        if (blob) {
+          zip.file(`public/${s.foto}`, blob);
+          rutasIncluidas.add(s.foto);
+        }
+      }
+
+      const contenido = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(contenido);
+      const fecha = new Date().toISOString().slice(0, 10);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ubicsalon-export-${fecha}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      setZipInfo(`ZIP listo (${rutasIncluidas.size} foto${rutasIncluidas.size === 1 ? '' : 's'})`);
+      setTimeout(() => setZipInfo(''), 4000);
+    } catch (err) {
+      alert(`No se pudo generar el ZIP: ${err.message}`);
+    } finally {
+      setExportandoZip(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-2xl flex items-center justify-center p-3 md:p-6">
       <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-5xl h-[92vh] max-h-[850px] overflow-hidden flex flex-col shadow-2xl animate-in zoom-in-95 duration-150">
@@ -192,7 +275,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
               ⚙️ Gestión y Modificación de Salones FIME
             </h2>
             <p className="text-xs text-slate-400">
-              Filtra por edificio, realiza eliminación masiva o exporta <code>salones.json</code>.
+              Filtra por edificio, elimina en masa o exporta el <code>ZIP</code> con <code>salones.json</code> y fotos.
             </p>
           </div>
 
@@ -213,10 +296,20 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
             )}
             <button
               onClick={handleExportJSON}
-              className="bg-sky-500 hover:bg-sky-400 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md"
+              className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
+              title="Descargar solo salones.json"
             >
               {downloadSuccess ? <CheckCircle2 className="w-4 h-4" /> : <Download className="w-4 h-4" />}
-              <span>{downloadSuccess ? '¡Descargado!' : 'Exportar JSON'}</span>
+              <span>{downloadSuccess ? '¡Descargado!' : 'JSON'}</span>
+            </button>
+            <button
+              onClick={handleExportZip}
+              disabled={exportandoZip}
+              className="bg-sky-500 hover:bg-sky-400 disabled:opacity-60 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md"
+              title="Descargar ZIP con salones.json y las fotos nuevas, listo para descomprimir en la raíz del proyecto"
+            >
+              {zipInfo ? <CheckCircle2 className="w-4 h-4" /> : <Package className="w-4 h-4" />}
+              <span>{exportandoZip ? 'Generando…' : zipInfo || 'Exportar ZIP'}</span>
             </button>
             <button
               onClick={onClose}
@@ -515,14 +608,47 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                 </div>
 
                 <div>
-                  <label className="text-[11px] text-slate-400 font-medium block mb-1">URL Fotografía Exterior</label>
-                  <input
-                    type="url"
-                    placeholder="https://..."
-                    value={formData.foto}
-                    onChange={e => setFormData({...formData, foto: e.target.value})}
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
-                  />
+                  <label className="text-[11px] text-slate-400 font-medium block mb-1">Fotografía exterior del salón</label>
+                  <div className="flex items-start gap-3">
+                    <div className="w-28 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-700 bg-slate-900 flex items-center justify-center">
+                      {fotoPreview ? (
+                        <img src={fotoPreview} alt="Vista previa" className="w-full h-full object-cover" />
+                      ) : (
+                        <ImageIcon className="w-6 h-6 text-slate-600" />
+                      )}
+                    </div>
+                    <div className="flex-1 space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <label className="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+                          <Upload className="w-3.5 h-3.5" />
+                          <span>{procesandoFoto ? 'Procesando…' : formData.foto ? 'Cambiar foto' : 'Subir foto'}</span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            disabled={procesandoFoto}
+                            onChange={handleFotoChange}
+                            className="hidden"
+                          />
+                        </label>
+                        {formData.foto && (
+                          <button
+                            type="button"
+                            onClick={handleQuitarFoto}
+                            className="text-xs text-rose-400 hover:text-rose-300 font-semibold"
+                          >
+                            Quitar
+                          </button>
+                        )}
+                      </div>
+                      <p className="text-[10px] text-slate-500 leading-snug">
+                        Se comprime a WebP (800 px). Usa «Exportar ZIP» para añadirla al proyecto.
+                      </p>
+                      {formData.foto && (
+                        <p className="text-[10px] text-slate-500 truncate" title={formData.foto}>{formData.foto}</p>
+                      )}
+                      {fotoError && <p className="text-[11px] text-rose-400">{fotoError}</p>}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="pt-3 flex items-center gap-2">
