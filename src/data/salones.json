@@ -1,5 +1,43 @@
 [
   {
+    "id": "sal-5886",
+    "nombre": "Cisco 3",
+    "codigo": "CIS3",
+    "tipo": "Laboratorio",
+    "edificioId": "edificio-7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Tercer salón de Cisco",
+    "referencia": "",
+    "foto": "",
+    "tags": [
+      "cis3",
+      "cisco 3",
+      "edificio 7",
+      "piso 2"
+    ],
+    "edificioNombre": "Edificio 7"
+  },
+  {
+    "id": "sal-1567",
+    "nombre": "Cisco 2",
+    "codigo": "CIS2",
+    "tipo": "Laboratorio",
+    "edificioId": "edificio-7",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
+    "descripcion": "Segundo Salón de Cisco ",
+    "referencia": "",
+    "foto": "",
+    "tags": [
+      "cis2",
+      "cisco 2",
+      "edificio 7",
+      "piso 2"
+    ],
+    "edificioNombre": "Edificio 7"
+  },
+  {
     "id": "sal-3520",
     "nombre": "Cisco I",
     "codigo": "CIS1",
