@@ -228,7 +228,7 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
     // 7. Cargar modelo GLTF/GLB
     const loader = new GLTFLoader();
     loader.load(
-      '/campus.glb',
+      `${import.meta.env.BASE_URL}campus.glb`,
       (gltf) => {
         if (customModelGroupRef.current) {
           scene.remove(customModelGroupRef.current);

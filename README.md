@@ -1,16 +1,43 @@
-# React + Vite
+# Ubicsalon — FIME UANL
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Localizador exprés de salones, edificios y auditorios de FIME UANL con mapa 3D.
+Es una **PWA estática** (React + Vite + Three.js + Tailwind): no tiene backend ni variables de entorno.
 
-Currently, two official plugins are available:
+## Desarrollo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev       # servidor local (accesible desde la red Wi-Fi)
+npm run lint
+npm run build     # genera dist/
+npm run preview   # sirve dist/ para probar la PWA
+```
 
-## React Compiler
+Requiere Node **20.19+ o 22.12+** (ver `.node-version`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Datos y fotos de salones
 
-## Expanding the Oxlint configuration
+- Datos: `src/data/salones.json`.
+- Fotos: `public/img/salones/{edificioId}/{id}.webp` (ver [`public/img/salones/README.md`](public/img/salones/README.md)).
+- Desde el panel admin se suben fotos y se usa **Exportar ZIP**; el ZIP se descomprime en la raíz del proyecto y se hace commit.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Despliegue (Cloudflare Pages)
+
+Cada `git push` a `main` publica automáticamente.
+
+| Campo | Valor |
+|---|---|
+| Framework preset | `Vite` (o ninguno) |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | *(vacío)* |
+| Variable `NODE_VERSION` | `22` (opcional; también se lee `.node-version`) |
+
+Pasos: Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** →
+repositorio `OsvaldoAAM/Ubicsalon` → rellenar la tabla → **Save and Deploy**.
+
+Notas:
+- `public/_headers` define la caché (el service worker y el HTML siempre se revalidan).
+- La app usa `base: './'`, por lo que también funciona en subrutas (GitHub Pages, etc.).
+- Las fotos de salones se cachean en el dispositivo al verlas (no se precachean todas).
+- El HTTPS que da el hosting es obligatorio para que la PWA sea instalable y funcione el service worker.

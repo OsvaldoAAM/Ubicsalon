@@ -15,7 +15,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.ico', 'favicon.svg', 'apple-touch-icon-180x180.png', 'img/placeholder-salon.svg'],
       manifest: {
         name: 'Ubicsalon - FIME UANL',
         short_name: 'Ubicsalon',
@@ -25,33 +25,31 @@ export default defineConfig({
         display: 'standalone',
         orientation: 'portrait',
         start_url: '.',
+        scope: '.',
+        lang: 'es',
         icons: [
-          {
-            src: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
+          { src: 'pwa-64x64.png', sizes: '64x64', type: 'image/png' },
+          { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' },
+          { src: 'maskable-icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,webp,jpg,jpeg,avif}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,webmanifest,glb}'],
+        // Las fotos de salones NO se precachean (pueden ser ~8 MB); se guardan al verlas
+        globIgnores: ['img/salones/**'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/images\.unsplash\.com\/.*/i,
+            urlPattern: ({ url }) => url.pathname.includes('/img/salones/'),
             handler: 'CacheFirst',
             options: {
-              cacheName: 'salones-imagenes-cache',
+              cacheName: 'salones-fotos',
               expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30
+                maxEntries: 300,
+                maxAgeSeconds: 60 * 60 * 24 * 90
               },
               cacheableResponse: {
-                statuses: [0, 200]
+                statuses: [200]
               }
             }
           }
