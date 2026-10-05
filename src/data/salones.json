@@ -5,8 +5,8 @@
     "codigo": "CIS1",
     "tipo": "Laboratorio",
     "edificioId": "edificio-7",
-    "piso": 1,
-    "pisoTexto": "Piso ",
+    "piso": 2,
+    "pisoTexto": "Piso 2",
     "descripcion": "Salón de Cisco 1",
     "referencia": "Alrededor del cuadro central",
     "foto": "",
@@ -14,7 +14,7 @@
       "cis1",
       "cisco i",
       "edificio 7",
-      "piso 1"
+      "piso 2"
     ],
     "edificioNombre": "Edificio 7"
   },
