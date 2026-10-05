@@ -7,7 +7,7 @@ import BuildingSelector from './components/BuildingSelector';
 import AdminEditorModal from './components/AdminEditorModal';
 import initialSalonesData from './data/salones.json';
 import { FIME_BUILDINGS } from './data/fimeBuildings3D';
-import { Sparkles, Building2, ChevronUp, ChevronDown } from 'lucide-react';
+import { Sparkles, Building2, ChevronUp, ChevronDown, MapPin } from 'lucide-react';
 
 export default function App() {
   const [salones, setSalones] = useState(() => {
@@ -133,28 +133,43 @@ export default function App() {
 
               {/* Lista expandible */}
               {isListExpanded && (
-                <div className="space-y-2 max-h-52 overflow-y-auto mt-2.5 pr-1 scrollable-panel">
+                <div className="space-y-2 max-h-60 overflow-y-auto mt-2.5 pr-1 scrollable-panel">
                   {displayedSalones.map((item) => (
-                    <button
+                    <div
                       key={item.id}
-                      onClick={() => handleSelectSalón(item)}
-                      className="w-full text-left p-2.5 bg-slate-950/70 hover:bg-slate-800/90 border border-slate-800/80 hover:border-sky-500/50 rounded-2xl transition-all group flex items-center justify-between"
+                      className="w-full p-2.5 bg-slate-950/80 hover:bg-slate-800/90 border border-slate-800/80 hover:border-sky-500/50 rounded-2xl transition-all flex items-center justify-between gap-2"
                     >
-                      <div>
-                        <div className="font-bold text-xs text-slate-200 group-hover:text-sky-300 transition-colors">
+                      <div
+                        onClick={() => handleSelectSalón(item)}
+                        className="flex-1 cursor-pointer min-w-0 pr-1"
+                      >
+                        <div className="font-bold text-xs sm:text-sm text-slate-200 hover:text-sky-300 transition-colors truncate">
                           {item.nombre}
                         </div>
-                        <div className="text-[10px] text-slate-400 flex items-center gap-1.5 mt-0.5">
-                          <Building2 className="w-3 h-3 text-slate-500" />
-                          <span>{item.edificioNombre}</span>
+                        <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-0.5 truncate">
+                          <Building2 className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                          <span className="truncate">{item.edificioNombre}</span>
                           <span>•</span>
-                          <span>{item.pisoTexto}</span>
+                          <span className="shrink-0">{item.pisoTexto}</span>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2 py-1 rounded-xl">
-                        Ubicar
-                      </span>
-                    </button>
+
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSelectBuilding(item.edificioId);
+                          setSelectedPiso(item.piso);
+                          setSelectedSalón(null);
+                          setIsListExpanded(false);
+                        }}
+                        className="bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 text-sky-400 border border-sky-500/30 hover:border-sky-400/60 px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95 shrink-0 touch-manipulation cursor-pointer"
+                        title="Ubicar en el mapa 3D"
+                      >
+                        <MapPin className="w-4 h-4 text-sky-400" />
+                        <span>Ubicar</span>
+                      </button>
+                    </div>
                   ))}
                 </div>
               )}
