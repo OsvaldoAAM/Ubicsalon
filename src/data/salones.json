@@ -2005,8 +2005,11 @@
     "referencia": "Edificio 9, Piso 1",
     "tags": [
       "9102",
-      "edificio 9"
-    ]
+      "salón 9102",
+      "edificio 9",
+      "piso 1"
+    ],
+    "foto": "img/salones/edificio-9/sal-9102.webp"
   },
   {
     "id": "sal-9103",
