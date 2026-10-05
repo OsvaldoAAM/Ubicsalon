@@ -591,14 +591,14 @@ export default function IsometricMap({ selectedBuildingId, selectedPiso, onSelec
       <div className="fixed right-3 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2 pointer-events-auto">
         <button
           onClick={toggleRotationLock}
-          className="p-2.5 rounded-2xl bg-slate-900/85 hover:bg-slate-800 text-sky-400 border border-slate-700/80 backdrop-blur-xl shadow-xl active:scale-95 transition-all"
+          className="p-2.5 rounded-2xl bg-neutral-900/85 hover:bg-neutral-800 text-primary-400 border border-neutral-700/80 backdrop-blur-xl shadow-xl active:scale-95 transition-all"
           title={isRotationLocked ? "Desbloquear rotación" : "Bloquear rotación"}
         >
           {isRotationLocked ? <Lock className="w-5 h-5" /> : <Unlock className="w-5 h-5" />}
         </button>
         <button
           onClick={resetCam}
-          className="p-2.5 rounded-2xl bg-slate-900/85 hover:bg-slate-800 text-amber-400 border border-slate-700/80 backdrop-blur-xl shadow-xl active:scale-95 transition-all"
+          className="p-2.5 rounded-2xl bg-neutral-900/85 hover:bg-neutral-800 text-amber-400 border border-neutral-700/80 backdrop-blur-xl shadow-xl active:scale-95 transition-all"
           title="Restablecer vista"
         >
           <RotateCcw className="w-5 h-5" />

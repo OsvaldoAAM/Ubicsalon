@@ -38,8 +38,8 @@ export default function BuildingSelector({ selectedBuildingId, onSelectBuilding,
         }}
         className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-all border ${
           !selectedBuildingId && !activeCategory
-            ? 'bg-sky-500 text-slate-950 border-sky-400 shadow-md shadow-sky-500/20 font-bold'
-            : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200'
+            ? 'bg-primary-500 text-neutral-950 border-primary-400 shadow-md shadow-primary-500/20 font-bold'
+            : 'bg-neutral-900/80 text-neutral-400 border-neutral-800 hover:bg-neutral-800 hover:text-neutral-200'
         }`}
       >
         Todos
@@ -53,8 +53,8 @@ export default function BuildingSelector({ selectedBuildingId, onSelectBuilding,
         }}
         className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-all border ${
           activeCategory === 'Auditorio'
-            ? 'bg-purple-500 text-slate-950 border-purple-400 shadow-md shadow-purple-500/20 font-bold'
-            : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200'
+            ? 'bg-auditorio text-neutral-950 border-auditorio-light shadow-md shadow-auditorio/20 font-bold'
+            : 'bg-neutral-900/80 text-neutral-400 border-neutral-800 hover:bg-neutral-800 hover:text-neutral-200'
         }`}
       >
         Auditorios
@@ -68,14 +68,14 @@ export default function BuildingSelector({ selectedBuildingId, onSelectBuilding,
         }}
         className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-all border ${
           activeCategory === 'Laboratorio'
-            ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20 font-bold'
-            : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200'
+            ? 'bg-amber-500 text-neutral-950 border-amber-400 shadow-md shadow-amber-500/20 font-bold'
+            : 'bg-neutral-900/80 text-neutral-400 border-neutral-800 hover:bg-neutral-800 hover:text-neutral-200'
         }`}
       >
         Laboratorios
       </button>
 
-      <div className="w-[1px] h-4 bg-slate-800 shrink-0 mx-0.5" />
+      <div className="w-[1px] h-4 bg-neutral-800 shrink-0 mx-0.5" />
 
       {FIME_BUILDINGS.map((bld) => (
         <button
@@ -87,8 +87,8 @@ export default function BuildingSelector({ selectedBuildingId, onSelectBuilding,
           }}
           className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-all border ${
             selectedBuildingId === bld.id
-              ? 'bg-slate-100 text-slate-950 border-white shadow-md shadow-white/20 font-bold scale-[1.02]'
-              : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200'
+              ? 'bg-neutral-100 text-neutral-950 border-white shadow-md shadow-white/20 font-bold scale-[1.02]'
+              : 'bg-neutral-900/80 text-neutral-400 border-neutral-800 hover:bg-neutral-800 hover:text-neutral-200'
           }`}
         >
           {bld.shortName}

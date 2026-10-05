@@ -109,7 +109,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
     const itemsToDuplicate = salones.filter(s => selectedIds.has(s.id));
     const duplicatedItems = itemsToDuplicate.map(item => ({
       ...item,
-      id: `sal-${Date.now()}-${Math.floor(Math.random()*1000)}`,
+      id: `sal-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
       nombre: `${item.nombre} (Copia)`,
       codigo: `${item.codigo}-COPY`
     }));
@@ -179,7 +179,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
 
   const handleQuitarFoto = async () => {
     if (esRutaRelativa(formData.foto)) {
-      await borrarFotoLocal(formData.foto).catch(() => {});
+      await borrarFotoLocal(formData.foto).catch(() => { });
     }
     setFormData((prev) => ({ ...prev, foto: '' }));
     setFotoVersion((v) => v + 1);
@@ -265,16 +265,16 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-2xl flex items-center justify-center p-3 md:p-6">
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-5xl h-[92vh] max-h-[850px] overflow-hidden flex flex-col shadow-2xl animate-in zoom-in-95 duration-150">
-        
+    <div className="fixed inset-0 z-50 bg-neutral-950/85 backdrop-blur-2xl flex items-center justify-center p-3 md:p-6">
+      <div className="bg-neutral-900 border border-neutral-800 rounded-3xl w-full max-w-5xl h-[92vh] max-h-[850px] overflow-hidden flex flex-col shadow-2xl animate-in zoom-in-95 duration-150">
+
         {/* TOP BAR: Título y Acciones Principales */}
-        <div className="px-5 py-3.5 border-b border-slate-800 flex items-center justify-between bg-slate-900/90">
+        <div className="px-5 py-3.5 border-b border-neutral-800 flex items-center justify-between bg-neutral-900/90">
           <div>
-            <h2 className="text-base md:text-lg font-bold text-slate-100 flex items-center gap-2">
+            <h2 className="text-base md:text-lg font-bold text-neutral-100 flex items-center gap-2">
               ⚙️ Gestión y Modificación de Salones FIME
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-neutral-400">
               Filtra por edificio, elimina en masa o exporta el <code>ZIP</code> con <code>salones.json</code> y fotos.
             </p>
           </div>
@@ -296,7 +296,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
             )}
             <button
               onClick={handleExportJSON}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
+              className="bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
               title="Descargar solo salones.json"
             >
               {downloadSuccess ? <CheckCircle2 className="w-4 h-4" /> : <Download className="w-4 h-4" />}
@@ -305,7 +305,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
             <button
               onClick={handleExportZip}
               disabled={exportandoZip}
-              className="bg-sky-500 hover:bg-sky-400 disabled:opacity-60 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md"
+              className="bg-primary-500 hover:bg-primary-400 disabled:opacity-60 text-neutral-950 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md"
               title="Descargar ZIP con salones.json y las fotos nuevas, listo para descomprimir en la raíz del proyecto"
             >
               {zipInfo ? <CheckCircle2 className="w-4 h-4" /> : <Package className="w-4 h-4" />}
@@ -313,7 +313,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white"
+              className="p-1.5 rounded-xl text-neutral-400 hover:bg-neutral-800 hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
@@ -321,26 +321,24 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
         </div>
 
         {/* NAVEGACIÓN SECUNDARIA Y FILTROS */}
-        <div className="px-5 py-3 border-b border-slate-800 bg-slate-950/60 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="px-5 py-3 border-b border-neutral-800 bg-neutral-950/60 flex flex-col md:flex-row items-center justify-between gap-3">
           {/* Tabs: Lista vs Agregar */}
-          <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-800 w-full md:w-auto">
+          <div className="flex items-center gap-1.5 bg-neutral-900 p-1 rounded-xl border border-neutral-800 w-full md:w-auto">
             <button
               onClick={() => setActiveTab('LIST')}
-              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                activeTab === 'LIST'
-                  ? 'bg-sky-500 text-slate-950'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${activeTab === 'LIST'
+                ? 'bg-primary-500 text-neutral-950'
+                : 'text-neutral-400 hover:text-neutral-200'
+                }`}
             >
               📋 Lista y Edición ({salones.length})
             </button>
             <button
               onClick={() => handleOpenForm(null)}
-              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${
-                activeTab === 'FORM'
-                  ? 'bg-sky-500 text-slate-950'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${activeTab === 'FORM'
+                ? 'bg-primary-500 text-neutral-950'
+                : 'text-neutral-400 hover:text-neutral-200'
+                }`}
             >
               <Plus className="w-3.5 h-3.5" />
               <span>{editingItem ? 'Editar Salón' : 'Nuevo Salón'}</span>
@@ -352,13 +350,13 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
             <div className="flex flex-wrap md:flex-nowrap items-center gap-2 w-full md:w-auto">
               {/* Buscador de Tabla */}
               <div className="relative flex-1 md:w-56">
-                <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400" />
+                <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-neutral-400" />
                 <input
                   type="text"
                   placeholder="Buscar código/nombre..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full pl-8 pr-2 py-1.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-200 outline-none focus:border-sky-500"
+                  className="w-full pl-8 pr-2 py-1.5 bg-neutral-900 border border-neutral-700/80 rounded-xl text-xs text-neutral-200 outline-none focus:border-primary-500"
                 />
               </div>
 
@@ -366,7 +364,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
               <select
                 value={filterEdificio}
                 onChange={e => setFilterEdificio(e.target.value)}
-                className="bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-200 px-2.5 py-1.5 outline-none focus:border-sky-500"
+                className="bg-neutral-900 border border-neutral-700/80 rounded-xl text-xs text-neutral-200 px-2.5 py-1.5 outline-none focus:border-primary-500"
               >
                 <option value="ALL">🏢 Todos los Edificios</option>
                 {FIME_BUILDINGS.map(b => (
@@ -378,7 +376,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
               <select
                 value={filterTipo}
                 onChange={e => setFilterTipo(e.target.value)}
-                className="bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-200 px-2.5 py-1.5 outline-none focus:border-sky-500"
+                className="bg-neutral-900 border border-neutral-700/80 rounded-xl text-xs text-neutral-200 px-2.5 py-1.5 outline-none focus:border-primary-500"
               >
                 <option value="ALL">🔖 Todos los Tipos</option>
                 <option value="Salón Estándar">Salón Estándar</option>
@@ -394,22 +392,22 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
           {activeTab === 'LIST' ? (
             <div className="space-y-3">
               {/* Barra de Acciones Masivas */}
-              <div className="flex items-center justify-between bg-slate-950 p-2.5 rounded-2xl border border-slate-800 text-xs">
+              <div className="flex items-center justify-between bg-neutral-950 p-2.5 rounded-2xl border border-neutral-800 text-xs">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleSelectAllFiltered}
-                    className="flex items-center gap-1.5 text-slate-300 font-semibold hover:text-white"
+                    className="flex items-center gap-1.5 text-neutral-300 font-semibold hover:text-white"
                   >
                     {selectedIds.size === filteredSalones.length && filteredSalones.length > 0 ? (
-                      <CheckSquare className="w-4 h-4 text-sky-400" />
+                      <CheckSquare className="w-4 h-4 text-primary-400" />
                     ) : (
-                      <Square className="w-4 h-4 text-slate-500" />
+                      <Square className="w-4 h-4 text-neutral-500" />
                     )}
                     <span>Seleccionar Todos ({filteredSalones.length})</span>
                   </button>
 
                   {selectedIds.size > 0 && (
-                    <span className="text-sky-400 font-bold bg-sky-500/10 px-2 py-0.5 rounded-full border border-sky-500/20">
+                    <span className="text-primary-400 font-bold bg-primary-500/10 px-2 py-0.5 rounded-full border border-primary-500/20">
                       {selectedIds.size} seleccionados
                     </span>
                   )}
@@ -420,14 +418,14 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                   <div className="flex items-center gap-2">
                     <button
                       onClick={handleBulkDuplicate}
-                      className="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded-xl text-xs font-semibold flex items-center gap-1 border border-slate-700"
+                      className="bg-neutral-800 hover:bg-neutral-700 text-neutral-200 px-3 py-1 rounded-xl text-xs font-semibold flex items-center gap-1 border border-neutral-700"
                     >
                       <Copy className="w-3.5 h-3.5" />
                       <span>Duplicar</span>
                     </button>
                     <button
                       onClick={handleBulkDelete}
-                      className="bg-rose-500 hover:bg-rose-400 text-slate-950 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1 transition-all shadow-md shadow-rose-500/20"
+                      className="bg-rose-500 hover:bg-rose-400 text-neutral-950 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1 transition-all shadow-md shadow-rose-500/20"
                     >
                       <Trash className="w-3.5 h-3.5" />
                       <span>Eliminar Seleccionados ({selectedIds.size})</span>
@@ -438,7 +436,7 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
 
               {/* TABLA / LISTADO DE SALONES */}
               {filteredSalones.length === 0 ? (
-                <div className="text-center py-12 text-slate-500 text-sm">
+                <div className="text-center py-12 text-neutral-500 text-sm">
                   No se encontraron salones con los filtros aplicados.
                 </div>
               ) : (
@@ -448,38 +446,37 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                     return (
                       <div
                         key={item.id}
-                        className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between ${
-                          isSelected
-                            ? 'bg-sky-950/40 border-sky-500/60 shadow-md'
-                            : 'bg-slate-950/60 border-slate-800 hover:border-slate-700'
-                        }`}
+                        className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between ${isSelected
+                          ? 'bg-primary-950/40 border-primary-500/60 shadow-md'
+                          : 'bg-neutral-950/60 border-neutral-800 hover:border-neutral-700'
+                          }`}
                       >
                         <div className="flex items-center gap-3">
                           <button
                             onClick={() => handleToggleSelect(item.id)}
-                            className="text-slate-400 hover:text-sky-400"
+                            className="text-neutral-400 hover:text-primary-400"
                           >
                             {isSelected ? (
-                              <CheckSquare className="w-4 h-4 text-sky-400" />
+                              <CheckSquare className="w-4 h-4 text-primary-400" />
                             ) : (
-                              <Square className="w-4 h-4 text-slate-600" />
+                              <Square className="w-4 h-4 text-neutral-600" />
                             )}
                           </button>
 
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="font-bold text-slate-100 text-xs md:text-sm">
+                              <span className="font-bold text-neutral-100 text-xs md:text-sm">
                                 {item.nombre}
                               </span>
-                              <span className="text-[10px] px-2 py-0.2 rounded-full border bg-slate-900 text-slate-300 border-slate-700">
+                              <span className="text-[10px] px-2 py-0.2 rounded-full border bg-neutral-900 text-neutral-300 border-neutral-700">
                                 {item.codigo}
                               </span>
                             </div>
-                            <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-0.5">
-                              <Building className="w-3 h-3 text-slate-500" />
+                            <div className="text-[11px] text-neutral-400 flex items-center gap-1.5 mt-0.5">
+                              <Building className="w-3 h-3 text-neutral-500" />
                               <span>{item.edificioNombre}</span>
                               <span>•</span>
-                              <Layers className="w-3 h-3 text-slate-500" />
+                              <Layers className="w-3 h-3 text-neutral-500" />
                               <span>{item.pisoTexto}</span>
                             </div>
                           </div>
@@ -489,14 +486,14 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => handleOpenForm(item)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-sky-400 hover:bg-slate-800"
+                            className="p-1.5 rounded-lg text-neutral-400 hover:text-primary-400 hover:bg-neutral-800"
                             title="Editar Salón"
                           >
                             <Edit2 className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => handleDeleteSingle(item.id)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800"
+                            className="p-1.5 rounded-lg text-neutral-400 hover:text-rose-400 hover:bg-neutral-800"
                             title="Eliminar Salón"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -510,42 +507,42 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
             </div>
           ) : (
             /* FORMULARIO DE AGREGAR / EDITAR SALÓN */
-            <div className="max-w-xl mx-auto bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-4">
-              <h3 className="text-sm font-bold text-slate-100 border-b border-slate-800 pb-2">
+            <div className="max-w-xl mx-auto bg-neutral-950/80 p-5 rounded-2xl border border-neutral-800 space-y-4">
+              <h3 className="text-sm font-bold text-neutral-100 border-b border-neutral-800 pb-2">
                 {editingItem ? '✏️ Editar Salón Existente' : '➕ Registrar Nuevo Salón'}
               </h3>
 
               <form onSubmit={handleSaveForm} className="space-y-3">
                 <div>
-                  <label className="text-[11px] text-slate-400 font-medium block mb-1">Nombre Completo del Salón / Auditorio</label>
+                  <label className="text-[11px] text-neutral-400 font-medium block mb-1">Nombre Completo del Salón / Auditorio</label>
                   <input
                     type="text"
                     required
                     placeholder="ej. Salón 1105 / Auditorio Polivalente"
                     value={formData.nombre}
-                    onChange={e => setFormData({...formData, nombre: e.target.value})}
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
+                    onChange={e => setFormData({ ...formData, nombre: e.target.value })}
+                    className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 focus:outline-none focus:border-primary-500"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="text-[11px] text-slate-400 font-medium block mb-1">Código / Nomenclatura</label>
+                    <label className="text-[11px] text-neutral-400 font-medium block mb-1">Código / Nomenclatura</label>
                     <input
                       type="text"
                       required
                       placeholder="ej. 1105 / POLIVALENTE"
                       value={formData.codigo}
-                      onChange={e => setFormData({...formData, codigo: e.target.value})}
-                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
+                      onChange={e => setFormData({ ...formData, codigo: e.target.value })}
+                      className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 focus:outline-none focus:border-primary-500"
                     />
                   </div>
                   <div>
-                    <label className="text-[11px] text-slate-400 font-medium block mb-1">Tipo de Aula</label>
+                    <label className="text-[11px] text-neutral-400 font-medium block mb-1">Tipo de Aula</label>
                     <select
                       value={formData.tipo}
-                      onChange={e => setFormData({...formData, tipo: e.target.value})}
-                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
+                      onChange={e => setFormData({ ...formData, tipo: e.target.value })}
+                      className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 focus:outline-none focus:border-primary-500"
                     >
                       <option value="Salón Estándar">Salón Estándar</option>
                       <option value="Auditorio">Auditorio</option>
@@ -556,11 +553,11 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
 
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="text-[11px] text-slate-400 font-medium block mb-1">Edificio</label>
+                    <label className="text-[11px] text-neutral-400 font-medium block mb-1">Edificio</label>
                     <select
                       value={formData.edificioId}
-                      onChange={e => setFormData({...formData, edificioId: e.target.value})}
-                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
+                      onChange={e => setFormData({ ...formData, edificioId: e.target.value })}
+                      className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 focus:outline-none focus:border-primary-500"
                     >
                       {FIME_BUILDINGS.map(b => (
                         <option key={b.id} value={b.id}>{b.name}</option>
@@ -569,57 +566,57 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                   </div>
 
                   <div>
-                    <label className="text-[11px] text-slate-400 font-medium block mb-1">Número de Piso</label>
+                    <label className="text-[11px] text-neutral-400 font-medium block mb-1">Número de Piso</label>
                     <input
                       type="number"
                       min="1"
                       max="5"
                       value={formData.piso}
                       onChange={e => setFormData({
-                        ...formData, 
+                        ...formData,
                         piso: parseInt(e.target.value) || 1,
                         pisoTexto: `Piso ${e.target.value}`
                       })}
-                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
+                      className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 focus:outline-none focus:border-primary-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[11px] text-slate-400 font-medium block mb-1">Descripción corta</label>
+                  <label className="text-[11px] text-neutral-400 font-medium block mb-1">Descripción corta</label>
                   <textarea
                     rows="2"
                     placeholder="Capacidad o equipamiento..."
                     value={formData.descripcion}
-                    onChange={e => setFormData({...formData, descripcion: e.target.value})}
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
+                    onChange={e => setFormData({ ...formData, descripcion: e.target.value })}
+                    className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 focus:outline-none focus:border-primary-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-[11px] text-slate-400 font-medium block mb-1">Referencia para ubicarlo</label>
+                  <label className="text-[11px] text-neutral-400 font-medium block mb-1">Referencia para ubicarlo</label>
                   <input
                     type="text"
                     placeholder="ej. En el pasillo derecho al lado de la biblioteca"
                     value={formData.referencia}
-                    onChange={e => setFormData({...formData, referencia: e.target.value})}
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-sky-500"
+                    onChange={e => setFormData({ ...formData, referencia: e.target.value })}
+                    className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 rounded-xl text-xs text-neutral-100 focus:outline-none focus:border-primary-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-[11px] text-slate-400 font-medium block mb-1">Fotografía exterior del salón</label>
+                  <label className="text-[11px] text-neutral-400 font-medium block mb-1">Fotografía exterior del salón</label>
                   <div className="flex items-start gap-3">
-                    <div className="w-28 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-700 bg-slate-900 flex items-center justify-center">
+                    <div className="w-28 h-20 shrink-0 rounded-xl overflow-hidden border border-neutral-700 bg-neutral-900 flex items-center justify-center">
                       {fotoPreview ? (
                         <img src={fotoPreview} alt="Vista previa" className="w-full h-full object-cover" />
                       ) : (
-                        <ImageIcon className="w-6 h-6 text-slate-600" />
+                        <ImageIcon className="w-6 h-6 text-neutral-600" />
                       )}
                     </div>
                     <div className="flex-1 space-y-1.5">
                       <div className="flex items-center gap-2">
-                        <label className="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+                        <label className="cursor-pointer bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 px-3 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
                           <Upload className="w-3.5 h-3.5" />
                           <span>{procesandoFoto ? 'Procesando…' : formData.foto ? 'Cambiar foto' : 'Subir foto'}</span>
                           <input
@@ -640,11 +637,11 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                           </button>
                         )}
                       </div>
-                      <p className="text-[10px] text-slate-500 leading-snug">
+                      <p className="text-[10px] text-neutral-500 leading-snug">
                         Se comprime a WebP (800 px). Usa «Exportar ZIP» para añadirla al proyecto.
                       </p>
                       {formData.foto && (
-                        <p className="text-[10px] text-slate-500 truncate" title={formData.foto}>{formData.foto}</p>
+                        <p className="text-[10px] text-neutral-500 truncate" title={formData.foto}>{formData.foto}</p>
                       )}
                       {fotoError && <p className="text-[11px] text-rose-400">{fotoError}</p>}
                     </div>
@@ -655,13 +652,13 @@ export default function AdminEditorModal({ isOpen, onClose, salonesList, onSaveS
                   <button
                     type="button"
                     onClick={() => setActiveTab('LIST')}
-                    className="w-1/2 bg-slate-800 hover:bg-slate-700 text-slate-300 py-2.5 rounded-xl text-xs font-semibold"
+                    className="w-1/2 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 py-2.5 rounded-xl text-xs font-semibold"
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
-                    className="w-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all shadow-md"
+                    className="w-1/2 bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all shadow-md"
                   >
                     <Save className="w-4 h-4" />
                     <span>Guardar Salón</span>

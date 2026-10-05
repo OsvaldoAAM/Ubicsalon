@@ -56,7 +56,7 @@ export default function SearchBar({ onSelectSalón, selectedSalón, salones }) {
   const getItemBadgeColor = (tipo) => {
     switch (tipo) {
       case 'Auditorio':
-        return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+        return 'bg-auditorio/20 text-auditorio-lighter border-auditorio/30';
       case 'Laboratorio':
         return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       default:
@@ -67,7 +67,7 @@ export default function SearchBar({ onSelectSalón, selectedSalón, salones }) {
   return (
     <div ref={wrapperRef} className="relative w-full max-w-xl mx-auto z-40">
       <div className="relative flex items-center shadow-xl">
-        <Search className="absolute left-4 w-5 h-5 text-sky-400 pointer-events-none" />
+        <Search className="absolute left-4 w-5 h-5 text-primary-400 pointer-events-none" />
         <input
           ref={inputRef}
           type="text"
@@ -75,12 +75,12 @@ export default function SearchBar({ onSelectSalón, selectedSalón, salones }) {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.trim().length > 0 && setIsOpen(true)}
           placeholder="Busca por salón (ej. 1102, 7204)"
-          className="w-full pl-12 pr-10 py-3.5 bg-slate-900/90 text-slate-100 placeholder-slate-400 text-sm md:text-base rounded-2xl border border-slate-700/80 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 outline-none backdrop-blur-xl transition-all shadow-inner"
+          className="w-full pl-12 pr-10 py-3.5 bg-neutral-900/90 text-neutral-100 placeholder-neutral-400 text-sm md:text-base rounded-2xl border border-neutral-700/80 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 outline-none backdrop-blur-xl transition-all shadow-inner"
         />
         {query && (
           <button
             onClick={handleClear}
-            className="absolute right-3.5 p-1 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="absolute right-3.5 p-1 rounded-full text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -89,15 +89,15 @@ export default function SearchBar({ onSelectSalón, selectedSalón, salones }) {
 
       {/* Dropdown de Sugerencias en Tiempo Real */}
       {isOpen && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden divide-y divide-slate-800/60 max-h-80 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-xl border border-neutral-700/80 rounded-2xl shadow-2xl overflow-hidden divide-y divide-neutral-800/60 max-h-80 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-150">
           {results.map((item) => (
             <button
               key={item.id}
               onClick={() => handleSelect(item)}
-              className="w-full px-4 py-3 text-left hover:bg-slate-800/80 transition-colors flex items-center justify-between group"
+              className="w-full px-4 py-3 text-left hover:bg-neutral-800/80 transition-colors flex items-center justify-between group"
             >
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-slate-800 group-hover:bg-sky-500/20 text-sky-400 transition-colors">
+                <div className="p-2 rounded-xl bg-neutral-800 group-hover:bg-primary-500/20 text-primary-400 transition-colors">
                   {item.tipo === 'Auditorio' ? (
                     <Award className="w-4 h-4" />
                   ) : item.tipo === 'Laboratorio' ? (
@@ -107,11 +107,11 @@ export default function SearchBar({ onSelectSalón, selectedSalón, salones }) {
                   )}
                 </div>
                 <div>
-                  <div className="font-medium text-slate-100 text-sm md:text-base group-hover:text-sky-300 transition-colors">
+                  <div className="font-medium text-neutral-100 text-sm md:text-base group-hover:text-primary-300 transition-colors">
                     {item.nombre}
                   </div>
-                  <div className="text-xs text-slate-400 flex items-center gap-1.5 mt-0.5">
-                    <MapPin className="w-3 h-3 text-slate-500" />
+                  <div className="text-xs text-neutral-400 flex items-center gap-1.5 mt-0.5">
+                    <MapPin className="w-3 h-3 text-neutral-500" />
                     <span>{item.edificioNombre}</span>
                     <span>•</span>
                     <span>{item.pisoTexto}</span>
@@ -132,7 +132,7 @@ export default function SearchBar({ onSelectSalón, selectedSalón, salones }) {
       )}
 
       {isOpen && results.length === 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 rounded-2xl text-center text-slate-400 text-sm shadow-2xl">
+        <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-neutral-900/95 backdrop-blur-xl border border-neutral-700/80 rounded-2xl text-center text-neutral-400 text-sm shadow-2xl">
           No se encontró ningún salón o auditorio que coincida con "{query}".
         </div>
       )}

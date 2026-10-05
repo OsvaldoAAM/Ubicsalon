@@ -18,15 +18,15 @@ export default function Header({ onOpenAdmin }) {
   }, []);
 
   return (
-    <header className="w-full bg-slate-900/85 backdrop-blur-2xl border border-slate-800/80 rounded-2xl px-3.5 py-2.5 flex items-center justify-between shadow-2xl">
+    <header className="w-full bg-neutral-900/85 backdrop-blur-2xl border border-neutral-800/80 rounded-2xl px-3.5 py-2.5 flex items-center justify-between shadow-2xl">
       {/* Brand & Logo */}
       <div className="flex items-center gap-2.5">
-        <div className="p-1.5 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 text-white shadow-md shadow-sky-500/20">
+        <div className="p-1.5 rounded-xl bg-gradient-to-tr from-primary-500 to-indigo-600 text-white shadow-md shadow-primary-500/20">
           <Compass className="w-4 h-4" />
         </div>
         <div>
-          <h1 className="text-sm font-black text-slate-100 tracking-tight flex items-center gap-1.5">
-            Ubicsalon <span className="text-[10px] font-bold text-sky-400 bg-sky-500/10 px-1.5 py-0.2 rounded-md border border-sky-500/20">FIME</span>
+          <h1 className="text-sm font-black text-neutral-100 tracking-tight flex items-center gap-1.5">
+            Ubicsalon <span className="text-[10px] font-bold text-primary-400 bg-primary-500/10 px-1.5 py-0.2 rounded-md border border-primary-500/20">FIME</span>
           </h1>
         </div>
       </div>
@@ -53,10 +53,10 @@ export default function Header({ onOpenAdmin }) {
 
         <button
           onClick={onOpenAdmin}
-          className="p-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/70 transition-all text-xs"
+          className="p-1.5 rounded-xl bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 border border-neutral-700/70 transition-all text-xs"
           title="Panel Editor"
         >
-          <Settings className="w-3.5 h-3.5 text-sky-400" />
+          <Settings className="w-3.5 h-3.5 text-primary-400" />
         </button>
       </div>
     </header>

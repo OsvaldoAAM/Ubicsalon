@@ -69,7 +69,7 @@ export default function App() {
   });
 
   return (
-    <div className="fixed inset-0 w-full h-full bg-[#070a12] text-slate-100 font-sans select-none overflow-hidden">
+    <div className="fixed inset-0 w-full h-full bg-background text-neutral-100 font-sans select-none overflow-hidden">
       {/* CAPA BASE (z-0): Mapa 3D 100% Interactivo */}
       <IsometricMap
         selectedBuildingId={selectedBuildingId}
@@ -88,7 +88,7 @@ export default function App() {
           <SearchBar onSelectSalón={handleSelectSalón} selectedSalón={selectedSalón} salones={salones} />
         </div>
 
-        <div className="pointer-events-auto bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-800/80 px-1 py-0.5 shadow-lg">
+        <div className="pointer-events-auto bg-neutral-900/80 backdrop-blur-xl rounded-2xl border border-neutral-800/80 px-1 py-0.5 shadow-lg">
           <BuildingSelector
             selectedBuildingId={selectedBuildingId}
             onSelectBuilding={handleSelectBuilding}
@@ -106,26 +106,26 @@ export default function App() {
           </div>
         ) : (
           <div className="pointer-events-auto inline-block w-full">
-            <div className="bg-slate-900/90 backdrop-blur-2xl border border-slate-800/90 rounded-3xl p-3 shadow-2xl">
+            <div className="bg-neutral-900/90 backdrop-blur-2xl border border-neutral-800/90 rounded-3xl p-3 shadow-2xl">
               {/* Encabezado Desplegable */}
               <div
                 onClick={() => setIsListExpanded(!isListExpanded)}
                 className="flex items-center justify-between cursor-pointer py-1 px-1"
               >
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-                  <h3 className="text-xs font-bold text-slate-200">
+                  <Sparkles className="w-3.5 h-3.5 text-primary-400" />
+                  <h3 className="text-xs font-bold text-neutral-200">
                     {selectedBuildingId
                       ? `Salones en ${FIME_BUILDINGS.find((b) => b.id === selectedBuildingId)?.name}`
                       : activeCategory
                       ? `${activeCategory}s`
                       : 'Salones FIME'}
                   </h3>
-                  <span className="text-[10px] font-bold text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded-full border border-sky-500/20">
+                  <span className="text-[10px] font-bold text-primary-400 bg-primary-500/10 px-2 py-0.5 rounded-full border border-primary-500/20">
                     {displayedSalones.length} disponibles
                   </span>
                 </div>
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-full">
+                <div className="flex items-center gap-1 text-[11px] font-semibold text-neutral-400 bg-neutral-800/80 px-2 py-0.5 rounded-full">
                   <span>{isListExpanded ? 'Ocultar' : 'Ver lista'}</span>
                   {isListExpanded ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
                 </div>
@@ -137,17 +137,17 @@ export default function App() {
                   {displayedSalones.map((item) => (
                     <div
                       key={item.id}
-                      className="w-full p-2.5 bg-slate-950/80 hover:bg-slate-800/90 border border-slate-800/80 hover:border-sky-500/50 rounded-2xl transition-all flex items-center justify-between gap-2"
+                      className="w-full p-2.5 bg-neutral-950/80 hover:bg-neutral-800/90 border border-neutral-800/80 hover:border-primary-500/50 rounded-2xl transition-all flex items-center justify-between gap-2"
                     >
                       <div
                         onClick={() => handleSelectSalón(item)}
                         className="flex-1 cursor-pointer min-w-0 pr-1"
                       >
-                        <div className="font-bold text-xs sm:text-sm text-slate-200 hover:text-sky-300 transition-colors truncate">
+                        <div className="font-bold text-xs sm:text-sm text-neutral-200 hover:text-primary-300 transition-colors truncate">
                           {item.nombre}
                         </div>
-                        <div className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-0.5 truncate">
-                          <Building2 className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                        <div className="text-[11px] text-neutral-400 flex items-center gap-1.5 mt-0.5 truncate">
+                          <Building2 className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
                           <span className="truncate">{item.edificioNombre}</span>
                           <span>•</span>
                           <span className="shrink-0">{item.pisoTexto}</span>
@@ -163,10 +163,10 @@ export default function App() {
                           setSelectedSalón(null);
                           setIsListExpanded(false);
                         }}
-                        className="bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 text-sky-400 border border-sky-500/30 hover:border-sky-400/60 px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95 shrink-0 touch-manipulation cursor-pointer"
+                        className="bg-neutral-800/90 hover:bg-neutral-700 active:bg-neutral-600 text-primary-400 border border-primary-500/30 hover:border-primary-400/60 px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95 shrink-0 touch-manipulation cursor-pointer"
                         title="Ubicar en el mapa 3D"
                       >
-                        <MapPin className="w-4 h-4 text-sky-400" />
+                        <MapPin className="w-4 h-4 text-primary-400" />
                         <span>Ubicar</span>
                       </button>
                     </div>
